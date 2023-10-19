@@ -1,0 +1,2 @@
+module LogOutdoorClimbsHelper
+end
