@@ -3,4 +3,78 @@
 
    <%= link_to 'Home', new_user_session_path =%>
 
-<p></p>
+
+
+<%= form_with(model: @log_climb, url: log_outdoor_climbs_path) do |form| %>
+  <div class="field">
+    <%= form.label :date, 'When did you go climbing?' %>
+    <%= form.date_field :date %>
+  </div>
+
+  <div class="field">
+    <%= form.label 'What type of climbing did you do?' %><br>
+    <%= form.check_box :sport %> Sport Climbing<br>
+    <%= form.check_box :trad %> Trad Climbing<br>
+    <%= form.check_box :bouldering %> Bouldering<br>
+  </div>
+
+  <div class="field">
+    <%= form.label :location, 'Where did you go climbing?' %>
+    <%= form.text_field :location %>
+  </div>
+  
+  <%= form.submit%>
+<% end %>
+<br>
+
+<%= form_with(model: @individual_outdoor_climb, local: true) do |form| %>
+  <div class="field">
+    <%= form.label :climb_name %>
+    <%= form.text_field :climb_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :grade %>
+    <%= form.text_field :grade %>
+  </div>
+
+  <div class="field">
+    <%= form.label :climbing_style %>
+    <%= form.text_field :climbing_style %>
+  </div>
+
+    <div class="boolean">
+    <%= form.label :tick %>
+    <%= form.check_box:tick %>
+  </div>
+
+  <div class="textfield">
+    <%= form.label :notes %>
+    <%= form.text_field :notes %>
+  </div>
+
+  <div class="field">
+    <%= form.label :climbing_partner %>
+    <%= form.text_field :climbing_partner %>
+  </div>
+  
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
+
+
+<h1>Previous Outdoor Climbs</h1>
+  <% if @log_climbs.present? %>
+  
+    <ul>
+      <% @log_climbs.each do |log_climb| %>
+        <li><%= log_climb.date %> - <%= log_climb.location %></li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>No previous climbs logged.</p>
+  <% end %>
+
+<%= link_to 'Edit', edit_log_outdoor_climbs_path(@log_climb) %>

@@ -1,0 +1,35 @@
+<%= form_with(model: @individual_outdoor_climb, local: true) do |form| %>
+  <div class="field">
+    <%= form.label :climb_name %>
+    <%= form.text_field :climb_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :grade %>
+    <%= form.text_field :grade %>
+  </div>
+
+  <div class="field">
+    <%= form.label :climbing_style %>
+    <%= form.text_field :climbing_style %>
+  </div>
+
+    <div class="field">
+    <%= form.label :tick %>
+    <%= form.text_field :tick %>
+  </div>
+
+  <div class="field">
+    <%= form.label :notes %>
+    <%= form.text_field :notes %>
+  </div>
+
+  <div class="field">
+    <%= form.label :climbing_partner %>
+    <%= form.text_field :climbing_partner %>
+  </div>
+  
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,3 @@
+class OutdoorClimbing < ApplicationRecord
+    
+end

@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  climb_name: MyString
+  grade: MyString
+  climbing_style: MyString
+  tick: false
+  notes: MyText
+  climbing_partner: MyString
+
+two:
+  climb_name: MyString
+  grade: MyString
+  climbing_style: MyString
+  tick: false
+  notes: MyText
+  climbing_partner: MyString

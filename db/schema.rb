@@ -10,9 +10,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_10_19_144319) do
+ActiveRecord::Schema[7.1].define(version: 2023_10_20_150651) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "individual_outdoor_climbs", force: :cascade do |t|
+    t.string "climb_name"
+    t.string "grade"
+    t.string "climbing_style"
+    t.boolean "tick"
+    t.text "notes"
+    t.string "climbing_partner"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "logoutdoorclimbs", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "outdoor_climbings", force: :cascade do |t|
+    t.date "date"
+    t.boolean "sport"
+    t.boolean "trad"
+    t.boolean "bouldering"
+    t.string "location"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false

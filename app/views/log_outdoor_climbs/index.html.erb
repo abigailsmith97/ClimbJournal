@@ -1,0 +1,11 @@
+<div class="previous-climbs">
+  <% if @log_climbs.present? %>
+    <ul>
+      <% @log_climbs.each do |log_climb| %>
+        <li><%= log_climb.date %> - <%= log_climb.location %></li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>No previous climbs logged.</p>
+  <% end %>
+</div>

@@ -1,0 +1,2 @@
+class IndividualOutdoorClimb < ApplicationRecord
+end

@@ -9,4 +9,9 @@ Rails.application.routes.draw do
   get 'log_outdoor_climbs', to: 'log_outdoor_climbs#new'
   post 'log_outdoor_climbs', to: 'log_outdoor_climbs#create'
 
+
+
+  resources :log_outdoor_climbs, only: [:index, :new, :create]
+
+  resources :individual_outdoor_climbs, only: [:new]
 end
