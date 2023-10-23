@@ -1,5 +1,5 @@
 import { Application } from "@hotwired/stimulus"
-
+import "@nathanvda/cocoon"
 const application = Application.start()
 
 // Configure Stimulus development experience

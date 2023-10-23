@@ -5,64 +5,41 @@
 
 
 
-<%= form_with(model: @log_climb, url: log_outdoor_climbs_path) do |form| %>
+<%= form_with(model: @log_climb, url: log_outdoor_climbs_path) do |f| %>
   <div class="field">
-    <%= form.label :date, 'When did you go climbing?' %>
-    <%= form.date_field :date %>
+    <%= f.label :date, 'When did you go climbing?' %>
+    <%= f.date_field :date %>
   </div>
 
   <div class="field">
-    <%= form.label 'What type of climbing did you do?' %><br>
-    <%= form.check_box :sport %> Sport Climbing<br>
-    <%= form.check_box :trad %> Trad Climbing<br>
-    <%= form.check_box :bouldering %> Bouldering<br>
+    <%= f.label 'What type of climbing did you do?' %><br>
+    <%= f.check_box :sport %> Sport Climbing<br>
+    <%= f.check_box :trad %> Trad Climbing<br>
+    <%= f.check_box :bouldering %> Bouldering<br>
   </div>
 
   <div class="field">
-    <%= form.label :location, 'Where did you go climbing?' %>
-    <%= form.text_field :location %>
+    <%= f.label :location, 'Where did you go climbing?' %>
+    <%= f.text_field :location %>
   </div>
   
-  <%= form.submit%>
+
+
+
+
+  <div class="individual_outdoor_climbs">
+    <%= f.fields_for :individual_outdoor_climbs do |individual_outdoor_climb| %>
+    <%= render partial 'individual_outdoor_climb_fields', f: individual_outdoor_climb %>
+  
+  <% end %>
+</div>
+<%= link_to_add_association "add climb", f, :individual_outdoor_climbs, data: {association_insertion_node: '.individual_outdoor_climbs', association_insertion_method: :append} %>
+    
+
+
+<%= f.submit "Save Climb", class:"btn-primary border-0 rounded-pill shadow p-3" %>
 <% end %>
 <br>
-
-<%= form_with(model: @individual_outdoor_climb, local: true) do |form| %>
-  <div class="field">
-    <%= form.label :climb_name %>
-    <%= form.text_field :climb_name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :grade %>
-    <%= form.text_field :grade %>
-  </div>
-
-  <div class="field">
-    <%= form.label :climbing_style %>
-    <%= form.text_field :climbing_style %>
-  </div>
-
-    <div class="boolean">
-    <%= form.label :tick %>
-    <%= form.check_box:tick %>
-  </div>
-
-  <div class="textfield">
-    <%= form.label :notes %>
-    <%= form.text_field :notes %>
-  </div>
-
-  <div class="field">
-    <%= form.label :climbing_partner %>
-    <%= form.text_field :climbing_partner %>
-  </div>
-  
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
-
 
 
 <h1>Previous Outdoor Climbs</h1>
@@ -77,4 +54,3 @@
     <p>No previous climbs logged.</p>
   <% end %>
 
-<%= link_to 'Edit', edit_log_outdoor_climbs_path(@log_climb) %>

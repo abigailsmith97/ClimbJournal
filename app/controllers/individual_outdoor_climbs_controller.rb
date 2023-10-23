@@ -2,6 +2,7 @@ class IndividualOutdoorClimbsController < ApplicationController
     def new
         @individual_outdoor_climbs = IndividualOutdoorClimb.all
       @individual_outdoor_climb = IndividualOutdoorClimb.new
+ 
     end
   
     def create
@@ -21,3 +22,7 @@ class IndividualOutdoorClimbsController < ApplicationController
       params.require(:individual_outdoor_climb).permit(:climb_name, :grade, :climbing_style, :tick, :notes, :climbing_partner)
     end
   end
+
+
+
+  

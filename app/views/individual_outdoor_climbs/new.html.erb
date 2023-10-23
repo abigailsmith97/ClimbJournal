@@ -1,0 +1,15 @@
+
+
+<!-- Sample code for "Add Another Climb" button -->
+<script>
+  function addClimb() {
+    const clone = document.querySelector('.climb-form').cloneNode(true);
+    document.querySelector('#climbs-container').appendChild(clone);
+  }
+</script>
+
+<div id="climbs-container">
+  <%= render 'form' %>
+</div>
+
+<%= button_to "Add Another Climb", "javascript:void(0);", onclick: "addClimb()" %>

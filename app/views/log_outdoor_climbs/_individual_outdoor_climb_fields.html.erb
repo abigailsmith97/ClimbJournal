@@ -1,0 +1,26 @@
+
+
+
+<!-- Nested Form for f -->
+<div class="nested-fields">
+    <%= f.label :climb_name%>
+    <%= f.text_area :climb_name%>
+    
+    <%= f.label :grade%>
+    <%= f.text_area :grade%>
+
+    <%= f.label :climbing_style%>
+    <%= f.text_area :climbing_style%>
+
+    <%= f.label :tick%>
+    <%= f.check_box :tick%>
+
+    <%= f.label :notes%>
+    <%= f.text_area :notes%>
+
+    <%= f.label :climbing_partner %>
+    <%= f.text_area :climbing_partner %>
+
+
+  <%= link_to_remove_association "Delete", f %>
+</div>

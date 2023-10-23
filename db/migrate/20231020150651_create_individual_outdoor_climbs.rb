@@ -8,6 +8,8 @@ class CreateIndividualOutdoorClimbs < ActiveRecord::Migration[7.1]
       t.text :notes
       t.string :climbing_partner
 
+      t.references :outdoor_climbing
+
       t.timestamps
     end
   end
