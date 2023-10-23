@@ -1,6 +1,15 @@
 class IndividualOutdoorClimbsController < ApplicationController
+
+   
+        def index
+            @individual_outdoor_climbs = IndividualOutdoorClimb.all
+          end
+     
+     
+
+
     def new
-        @individual_outdoor_climbs = IndividualOutdoorClimb.all
+      @individual_outdoor_climbs = IndividualOutdoorClimb.all
       @individual_outdoor_climb = IndividualOutdoorClimb.new
  
     end

@@ -12,10 +12,9 @@
   </div>
 
   <div class="field">
-    <%= f.label 'What type of climbing did you do?' %><br>
-    <%= f.check_box :sport %> Sport Climbing<br>
-    <%= f.check_box :trad %> Trad Climbing<br>
-    <%= f.check_box :bouldering %> Bouldering<br>
+    <%= f.label :climbing_type, 'Select Climbing Style' %>
+  <%= f.select :climbing_type, ['Sport', 'Trad', 'Bouldering'], {}, class: 'form-control' %>
+
   </div>
 
   <div class="field">
@@ -42,15 +41,34 @@
 <br>
 
 
-<h1>Previous Outdoor Climbs</h1>
-  <% if @log_climbs.present? %>
-  
-    <ul>
-      <% @log_climbs.each do |log_climb| %>
-        <li><%= log_climb.date %> - <%= log_climb.location %></li>
-      <% end %>
-    </ul>
-  <% else %>
-    <p>No previous climbs logged.</p>
-  <% end %>
+<h2>Previous Outdoor Climbing Sessions</h2>
+ 
+<% if @log_climbs.present? %>
+  <ul>
+    <% @log_climbs.each do |log_climb| %>
+      <li>
+        <%= log_climb.date %> - <%= log_climb.location %> - <%= log_climb.climbing_type%>
+        <%= link_to "Edit", edit_log_outdoor_climb_url(log_climb) %>
+        
+        
+        <ul>
+          <% if log_climb.individual_outdoor_climbs.present? %>
+            <% log_climb.individual_outdoor_climbs.each do |individual_outdoor_climb| %>
+              <li>
+                <%= individual_outdoor_climb.climb_name %> - <%= individual_outdoor_climb.grade %>
+              </li>
+            <% end %>
+          <% else %>
+            <li>No individual outdoor climbs logged for this session.</li>
+          <% end %>
+        </ul>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No previous climbing sessions logged.</p>
+<% end %>
+
+
+
 

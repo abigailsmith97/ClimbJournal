@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
 
 
-  resources :log_outdoor_climbs, only: [:index, :new, :create]
+  resources :log_outdoor_climbs, only: [:index, :new, :create, :edit, :update]
 
-  resources :individual_outdoor_climbs, only: [:new]
+  resources :individual_outdoor_climbs, only: [:index, :new, :create]
 end

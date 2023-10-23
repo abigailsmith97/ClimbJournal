@@ -4,14 +4,15 @@ class LogOutdoorClimbsController < ApplicationController
     @log_climbs = OutdoorClimbing.all
  
   end
-  
+ 
+
   def edit
     @log_climb = OutdoorClimbing.find(params[:id])
   end
 
   def update
     @log_climb = OutdoorClimbing.find(params[:id])
-
+  
     if @log_climb.update(log_climb_params)
       redirect_to log_outdoor_climbs_path, notice: "Climb updated successfully!"
     else
@@ -21,7 +22,7 @@ class LogOutdoorClimbsController < ApplicationController
 
 
   def new
-
+    @individual_outdoor_climbs = IndividualOutdoorClimb.all
     @log_climb = OutdoorClimbing.new
     @log_climbs = OutdoorClimbing.all
 
@@ -42,6 +43,6 @@ class LogOutdoorClimbsController < ApplicationController
   private
 
   def log_climb_params
-    params.require(:outdoor_climbing).permit(:date, :sport, :trad, :bouldering, :location, individual_outdoor_climbs_attributes:[:id, :climb_name, :grade, :climbing_style, :tick, :notes, :climbing_partner, :_destroy])
+    params.require(:outdoor_climbing).permit(:date, :climbing_type, :location, individual_outdoor_climbs_attributes:[:id, :climb_name, :grade, :climbing_style, :tick, :notes, :climbing_partner, :_destroy])
   end
 end
