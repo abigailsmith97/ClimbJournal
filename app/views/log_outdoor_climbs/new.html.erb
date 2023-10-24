@@ -27,47 +27,19 @@
 
 
   <div class="individual_outdoor_climbs">
-    <%= f.fields_for :individual_outdoor_climbs do |individual_outdoor_climb| %>
-    <%= render partial 'individual_outdoor_climb_fields', f: individual_outdoor_climb %>
+        <%= f.fields_for :individual_outdoor_climbs do |individual_outdoor_climb| %>
+        <%= render partial 'individual_outdoor_climb_fields', f: individual_outdoor_climb %>
   
-  <% end %>
-</div>
-<%= link_to_add_association "add climb", f, :individual_outdoor_climbs, data: {association_insertion_node: '.individual_outdoor_climbs', association_insertion_method: :append} %>
+        <% end %>
+    </div>
+    <%= link_to_add_association "add climb", f, :individual_outdoor_climbs, data: {association_insertion_node: '.individual_outdoor_climbs', association_insertion_method: :append} %>
     
 
 
-<%= f.submit "Save Climb", class:"btn-primary border-0 rounded-pill shadow p-3" %>
+    <%= f.submit "Save Climb", class:"btn-primary border-0 rounded-pill shadow p-3" %>
 <% end %>
 <br>
 
-
-<h2>Previous Outdoor Climbing Sessions</h2>
- 
-<% if @log_climbs.present? %>
-  <ul>
-    <% @log_climbs.each do |log_climb| %>
-      <li>
-        <%= log_climb.date %> - <%= log_climb.location %> - <%= log_climb.climbing_type%>
-        <%= link_to "Edit", edit_log_outdoor_climb_url(log_climb) %>
-        
-        
-        <ul>
-          <% if log_climb.individual_outdoor_climbs.present? %>
-            <% log_climb.individual_outdoor_climbs.each do |individual_outdoor_climb| %>
-              <li>
-                <%= individual_outdoor_climb.climb_name %> - <%= individual_outdoor_climb.grade %>
-              </li>
-            <% end %>
-          <% else %>
-            <li>No individual outdoor climbs logged for this session.</li>
-          <% end %>
-        </ul>
-      </li>
-    <% end %>
-  </ul>
-<% else %>
-  <p>No previous climbing sessions logged.</p>
-<% end %>
 
 
 

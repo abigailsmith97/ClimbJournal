@@ -2,13 +2,14 @@ class LogOutdoorClimbsController < ApplicationController
   
   def index
     @log_climbs = OutdoorClimbing.all
- 
+    
   end
  
 
   def edit
     @log_climb = OutdoorClimbing.find(params[:id])
   end
+
 
   def update
     @log_climb = OutdoorClimbing.find(params[:id])
@@ -23,20 +24,25 @@ class LogOutdoorClimbsController < ApplicationController
 
   def new
     @individual_outdoor_climbs = IndividualOutdoorClimb.all
+    
     @log_climb = OutdoorClimbing.new
     @log_climbs = OutdoorClimbing.all
 
- 
   end
-  
+
+  def destroy
+    OutdoorClimbing.find(params[:id]).destroy
+
+    redirect_to log_outdoor_climbs_url
+  end
 
   def create
     @log_climb = OutdoorClimbing.new(log_climb_params)
-    @log_climbs = OutdoorClimbing.all
+  
     if @log_climb.save
       redirect_to log_outdoor_climbs_url, notice: "Climb logged successfully!"
     else
-      render :new
+      redirect_to log_outdoor_climbs_url
     end
   end
 

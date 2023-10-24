@@ -1,0 +1,65 @@
+<h1>Log Outdoor Climbing Session</h1>
+<%# <%= link_to 'Sign out', destroy_user_session_path, data: { turbo_method: :delete }<br> %> 
+<%# <%= link_to 'Home', new_user_session_path =%> %>
+<%= form_with(model: @log_climb, url: log_outdoor_climbs_path) do |f| %>
+  <div class="field">
+    <%= f.label :date, 'When did you go climbing?' %>
+    <%= f.date_field :date %>
+  </div>
+
+  <div class="field">
+    <%= f.label :climbing_type, 'Select Climbing Style' %>
+    <%= f.select :climbing_type, ['Sport', 'Trad', 'Bouldering'], {}, class: 'form-control' %>
+
+  </div>
+
+  <div class="field">
+    <%= f.label :location, 'Where did you go climbing?' %>
+    <%= f.text_field :location %>
+  </div>
+  
+
+  <div class="individual_outdoor_climbs">
+    <%= f.fields_for :individual_outdoor_climbs do |individual_outdoor_climb| %>
+        <div class="nested-fields">
+            <div class="field">
+                <%= f.label :climb_name%>
+                <%= f.text_area :climb_name%>
+            </div>
+        
+            <div class="field">
+                <%= f.label :grade%>
+                <%= f.text_area :grade%>
+            </div>
+
+            <div class="field">
+                <%= f.label :climbing_style%>
+                <%= f.text_area :climbing_style%>
+            </div>
+
+            <div class="field">
+                <%= f.label :tick%>
+                <%= f.check_box :tick%>
+            </div>
+
+            <div class="field">
+                <%= f.label :notes%>
+                <%= f.text_area :notes%>
+            </div>
+
+            <div class="field">
+                <%= f.label :climbing_partner %>
+                <%= f.text_area :climbing_partner %>
+            </div>
+
+    </div>
+  
+    <% end %>
+  </div>
+<%= link_to_add_association "add climb", f, :individual_outdoor_climbs, data: {association_insertion_node: '.individual_outdoor_climbs', association_insertion_method: :append} %>
+    
+
+
+<%= f.submit "Save Climb", class:"btn-primary border-0 rounded-pill shadow p-3" %>
+<% end %>
+<br>

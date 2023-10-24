@@ -16,11 +16,34 @@
 
   <div class="individual_outdoor_climbs">
   <%= f.fields_for :individual_outdoor_climbs do |individual_outdoor_climb| %>
-  <%= render 'individual_outdoor_climb_fields', f: individual_outdoor_climb %>
-<% end %>
+    <div class="nested-fields">
+        <%= individual_outdoor_climb.label :climb_name%>
+        <%= individual_outdoor_climb.text_area :climb_name%>
+        
+        <%= individual_outdoor_climb.label :grade%>
+        <%= individual_outdoor_climb.text_area :grade%>
+
+        <%= individual_outdoor_climb.label :climbing_style%>
+        <%= individual_outdoor_climb.text_area :climbing_style%>
+
+        <%= individual_outdoor_climb.label :tick%>
+        <%= individual_outdoor_climb.check_box :tick%>
+
+        <%= individual_outdoor_climb.label :notes%>
+        <%= individual_outdoor_climb.text_area :notes%>
+
+        <%= individual_outdoor_climb.label :climbing_partner %>
+        <%= individual_outdoor_climb.text_area :climbing_partner %>
+
+        <%= individual_outdoor_climb.hidden_field :_destroy %>
+        <%= link_to_remove_association "Delete", individual_outdoor_climb %>
+
+    </div>
+    <% end %>
   </div>
 
   <%= link_to_add_association "add climb", f, :individual_outdoor_climbs, data: { association_insertion_node: '.individual_outdoor_climbs', association_insertion_method: :append } %>
 
   <%= f.submit "Save Climb", class: "btn-primary border-0 rounded-pill shadow p-3" %>
+  
 <% end %>
