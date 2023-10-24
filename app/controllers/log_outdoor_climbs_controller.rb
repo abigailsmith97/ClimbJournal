@@ -32,9 +32,8 @@ class LogOutdoorClimbsController < ApplicationController
 
   def destroy
     OutdoorClimbing.find(params[:id]).destroy
-
-    redirect_to log_outdoor_climbs_url
-  end
+    redirect_to new_log_outdoor_climb_url
+  end 
 
   def create
     @log_climb = OutdoorClimbing.new(log_climb_params)

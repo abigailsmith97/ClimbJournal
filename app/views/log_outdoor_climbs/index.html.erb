@@ -7,7 +7,7 @@
       <li>
         <%= log_climb.date %> - <%= log_climb.location %> - <%= log_climb.climbing_type%>
         <%= link_to "Edit", edit_log_outdoor_climb_url(log_climb) %> 
-        <%# <%= button_to "Delete", log_climb, method: :delete %>  
+        <%# <%= link_to 'Delete', log_climb, method: :delete%> 
         <ul>
           <% if log_climb.individual_outdoor_climbs.present? %>
             <% log_climb.individual_outdoor_climbs.each do |individual_outdoor_climb| %>

@@ -1,3 +1,5 @@
+
+
 <%= form_with(model: @log_climb, url: log_outdoor_climb_path(@log_climb), method: :patch) do |f| %>
   <div class="field">
     <%= f.label :date, 'When did you go climbing?' %>
@@ -43,6 +45,7 @@
   </div>
 
   <%= link_to_add_association "add climb", f, :individual_outdoor_climbs, data: { association_insertion_node: '.individual_outdoor_climbs', association_insertion_method: :append } %>
+  <%= link_to 'Delete', log_outdoor_climb_path(@log_climb), method: :delete, data: { confirm: 'Are you sure?' } %>
 
   <%= f.submit "Save Climb", class: "btn-primary border-0 rounded-pill shadow p-3" %>
   
