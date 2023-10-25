@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_10_23_152820) do
+ActiveRecord::Schema[7.1].define(version: 2023_10_25_093841) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -24,6 +24,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_23_152820) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "outdoor_climbing_id", null: false
+    t.string "user_id"
     t.index ["outdoor_climbing_id"], name: "index_individual_outdoor_climbs_on_outdoor_climbing_id"
   end
 
@@ -39,6 +40,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_23_152820) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "climbing_type"
+    t.string "user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -49,8 +51,10 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_23_152820) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "username"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["username"], name: "index_users_on_username", unique: true
   end
 
   add_foreign_key "individual_outdoor_climbs", "outdoor_climbings"

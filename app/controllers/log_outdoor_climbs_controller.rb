@@ -2,7 +2,7 @@ class LogOutdoorClimbsController < ApplicationController
   
   def index
     @log_climbs = OutdoorClimbing.all
-    
+   
   end
  
 
@@ -24,7 +24,6 @@ class LogOutdoorClimbsController < ApplicationController
 
   def new
     @individual_outdoor_climbs = IndividualOutdoorClimb.all
-    
     @log_climb = OutdoorClimbing.new
     @log_climbs = OutdoorClimbing.all
 

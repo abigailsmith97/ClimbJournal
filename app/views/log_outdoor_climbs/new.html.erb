@@ -1,7 +1,4 @@
 <h1>Log Outdoor Climbing Session</h1>
-<%= link_to 'Sign out', destroy_user_session_path, data: { turbo_method: :delete } %><br>
-
-   <%= link_to 'Home', new_user_session_path =%>
 
 
 
@@ -21,8 +18,6 @@
     <%= f.label :location, 'Where did you go climbing?' %>
     <%= f.text_field :location %>
   </div>
-  
-
 
 
 
@@ -37,6 +32,8 @@
 
 
     <%= f.submit "Save Climb", class:"btn-primary border-0 rounded-pill shadow p-3" %>
+
+
 <% end %>
 <br>
 
