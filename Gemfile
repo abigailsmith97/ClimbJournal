@@ -35,6 +35,8 @@ gem 'devise', '~> 4.9.2'
 gem 'jquery-rails'
 gem 'cocoon'
 
+gem 'webpacker', '~> 5.0'  
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
 
