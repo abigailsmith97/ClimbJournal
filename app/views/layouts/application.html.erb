@@ -1,24 +1,23 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>ClimbJournal</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
-  </head>
-
-  <body>
+<body>
+   <%= render '/shared/navbar' %>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-    <%= yield %>
+    
   </body>
 
-<%= javascript_include_tag "jquery" %>
+   <%= javascript_include_tag "jquery" %>
+  <head>
+   <meta name="viewport" content="width=device-width,initial-scale=1">
+   <%= csrf_meta_tags %>
+   <%= csp_meta_tag %>
 
+   <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+   <%= javascript_importmap_tags %>
+ </head>
 
+ <%= yield %>
 
 </html>
 
