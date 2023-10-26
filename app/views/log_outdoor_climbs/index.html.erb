@@ -6,7 +6,8 @@
 
 <% if user_signed_in? %>
   <ul>
-    <% @log_climbs = OutdoorClimbing.order(date: :desc) %>
+    <%# <% @log_climbs = OutdoorClimbing.order(date: :desc) %> 
+    
       <% @log_climbs.each do |log_climb| %>
         <li>
           <%= log_climb.date %> - <%= log_climb.location %> - <%= log_climb.climbing_type %>
@@ -26,8 +27,11 @@
         </li>
       <% end %>
     </ul>
+
+  <%= link_to "Log new climbing session", new_log_outdoor_climb_path %><br>
   <% else %>
-    <p>No previous climbing sessions logged.</p>
+    <p>Please sign in to see previous logged climbs.</p>
+    <%= link_to "Login", new_user_session_path %>
   <% end %>
 
-<%= link_to "Log new climbing session", new_log_outdoor_climb_url %><br>
+

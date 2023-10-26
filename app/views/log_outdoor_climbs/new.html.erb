@@ -1,40 +1,44 @@
 <h1>Log Outdoor Climbing Session</h1>
 
-
-
-<%= form_with(model: @log_climb, url: log_outdoor_climbs_path) do |f| %>
-  <div class="field">
-    <%= f.label :date, 'When did you go climbing?' %>
-    <%= f.date_field :date %>
-  </div>
-
-  <div class="field">
-    <%= f.label :climbing_type, 'Select Climbing Style' %>
-  <%= f.select :climbing_type, ['Sport', 'Trad', 'Bouldering'], {}, class: 'form-control' %>
-
-  </div>
-
-  <div class="field">
-    <%= f.label :location, 'Where did you go climbing?' %>
-    <%= f.text_field :location %>
-  </div>
-
-
-
-  <div class="individual_outdoor_climbs">
-        <%= f.fields_for :individual_outdoor_climbs do |individual_outdoor_climb| %>
-        <%= render partial 'individual_outdoor_climb_fields', f: individual_outdoor_climb %>
+<% if user_signed_in? %>
   
-        <% end %>
+  <%= form_with(model: @log_climb, url: log_outdoor_climbs_path) do |f| %>
+    <div class="field">
+      <%= f.label :date, 'When did you go climbing?' %>
+      <%= f.date_field :date %>
     </div>
-    <%= link_to_add_association "add climb", f, :individual_outdoor_climbs, data: {association_insertion_node: '.individual_outdoor_climbs', association_insertion_method: :append} %>
+
+    <div class="field">
+      <%= f.label :climbing_type, 'Select Climbing Style' %>
+    <%= f.select :climbing_type, ['Sport', 'Trad', 'Bouldering'], {}, class: 'form-control' %>
+
+    </div>
+
+    <div class="field">
+      <%= f.label :location, 'Where did you go climbing?' %>
+      <%= f.text_field :location %>
+    </div>
+
+
+
+    <div class="individual_outdoor_climbs">
+          <%= f.fields_for :individual_outdoor_climbs do |individual_outdoor_climb| %>
+          <%= render partial 'individual_outdoor_climb_fields', f: individual_outdoor_climb %>
     
+          <% end %>
+      </div>
+      <%= link_to_add_association "add climb", f, :individual_outdoor_climbs, data: {association_insertion_node: '.individual_outdoor_climbs', association_insertion_method: :append} %>
+      
 
-    <%= f.submit "Save Climb", class:"btn-primary border-0 rounded-pill shadow p-3" %>
+      <%= f.submit "Save Climb", class:"btn-primary border-0 rounded-pill shadow p-3" %>
 
+    <% end %>
 
-<% end %>
-<br>
+    <%else%>
+    <p>Please login to see log new climbs.</p>
+    <%= link_to "Login", new_user_session_path %>
+  <% end %>
+  <br>
 
 
 
