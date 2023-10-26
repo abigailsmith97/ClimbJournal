@@ -1,25 +1,28 @@
+<main>
+    <section class="py-5 text-left container">
+      <%# <div class="row py-lg-5">
+        <div class="col-lg-6 col-md-8 mx-auto"> %>
+          <p>
+        <!-- Nested Form for f -->
+        <div class="nested-fields">
+            <%= f.label :climb_name%>
+            <%= f.text_field :climb_name%>  
+            <%# <%= f.label :tick%>
+            <%# <%= f.check_box :tick%> 
+            <%= f.label :grade%>
+            <%= f.text_field :grade%>
+            <br>
 
-<!-- Nested Form for f -->
-<div class="nested-fields">
-    <%= f.label :climb_name%>
-    <%= f.text_area :climb_name%>
+            <%= f.label :climbing_style%>
+            <%= f.text_field :climbing_style%>
+          
+            <%= f.label :climbing_partner %>
+            <%= f.text_field :climbing_partner %>
+
+            <%= f.label :notes%>
+            <%= f.text_field :notes%>
+            <br>
+            <%= f.hidden_field :_destroy %>
+            <%= link_to_remove_association "Delete", f %>
+        </p>
     
-    <%= f.label :grade%>
-    <%= f.text_area :grade%>
-
-    <%= f.label :climbing_style%>
-    <%= f.text_area :climbing_style%>
-
-    <%= f.label :tick%>
-    <%= f.check_box :tick%>
-
-    <%= f.label :notes%>
-    <%= f.text_area :notes%>
-
-    <%= f.label :climbing_partner %>
-    <%= f.text_area :climbing_partner %>
-
-    <%= f.hidden_field :_destroy %>
-    <%= link_to_remove_association "Delete", f %>
-
-</div>

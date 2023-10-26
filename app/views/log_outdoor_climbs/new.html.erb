@@ -1,4 +1,14 @@
-<h1>Log Outdoor Climbing Session</h1>
+<main>
+    <section class="py-5 text-center container">
+      <div class="row py-lg-5">
+        <div class="col-lg-6 col-md-8 mx-auto">
+          <h1 class="fw-light">  Log a new Outdoor Climbing Session </h1>
+          
+          
+          </p>
+
+
+
 
 <% if user_signed_in? %>
   
@@ -7,11 +17,11 @@
       <%= f.label :date, 'When did you go climbing?' %>
       <%= f.date_field :date %>
     </div>
-
+    <br>
     <div class="field">
       <%= f.label :climbing_type, 'Select Climbing Style' %>
     <%= f.select :climbing_type, ['Sport', 'Trad', 'Bouldering'], {}, class: 'form-control' %>
-
+    <br>
     </div>
 
     <div class="field">
@@ -27,9 +37,10 @@
     
           <% end %>
       </div>
-      <%= link_to_add_association "add climb", f, :individual_outdoor_climbs, data: {association_insertion_node: '.individual_outdoor_climbs', association_insertion_method: :append} %>
+      <br>
+      <%= link_to_add_association "Add a climb", f, :individual_outdoor_climbs, data: {association_insertion_node: '.individual_outdoor_climbs', association_insertion_method: :append} %>
       
-
+<br>
       <%= f.submit "Save Climb", class:"btn-primary border-0 rounded-pill shadow p-3" %>
 
     <% end %>
@@ -44,3 +55,7 @@
 
 
 
+</p>
+        </div>
+      </div>
+    </section>

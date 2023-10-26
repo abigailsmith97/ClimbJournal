@@ -1,89 +1,20 @@
-<%# <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="http://localhost:3000/">Steel and Grit</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  # <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="http://localhost:3000/">Home <span class="sr-only">(current)</span></a>
-      </li>
-    
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropdown
-        </a>
-         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="http://localhost:3000/log_outdoor_climbs/new">Log an outdoor climb</a>
-          <a class="dropdown-item" href="http://localhost:3000/log_outdoor_climbs">Previous outdoor climbs</a>
-          
-        </div> 
-
-        <% if user_signed_in? %>
-        <%# </li>
-          <li class="nav-item">
-          <%# <%= link_to destroy_user_session_path, :method => 'delete' %> 
-          <%# <a class="nav-link active", destroy_user_session_path, >Sign Out</a>
-        </li>/
-        
-        <%else %>
-          <%# <li>
-     <li class="nav-item">
-          <a class="nav-link disabled" href="#">Sign Out</a> 
-          </li>
-          
-          <%end%>
-    <%# </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
-  </div>
-</nav>  %> 
-
-
-
-
-
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container">
     <%= link_to "Gripped", root_path, class: "navbar-brand" %>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarText">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <%# <%= link_to "Outdoor Climbing", new_log_outdoor_climb_path, class: "nav-item nav-link" %>
-
-        <%# <%= link_to "Categories", categories_path, class: "nav-item nav-link" %> 
-        <%# <%= link_to "Notifications", notifications_path, class: "nav-item nav-link" %> 
-      
-
-    
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Outdoor Climbing
-        </a>
-         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <%= link_to "Log new outdoor climb", new_log_outdoor_climb_path, class: "nav-item dropdown-link" %>
-          
-        </div> 
+      <%= link_to "Outdoor Climbing", new_log_outdoor_climb_path, class: "nav-item nav-link"  %>
       </ul>
       <ul class="navbar-nav mb-2 mb-lg-0">
         <% if user_signed_in? %>
           <%= link_to current_user.email, edit_user_registration_path, class: "nav-item nav-link" %>
           <%= button_to "Sign out", destroy_user_session_path, method: :delete, class: "nav-item nav-link" %>
-        <% else %> 
-        <%= link_to "Login", new_user_session_path, class: "nav-item nav-link" %>
+        <% else %>
           <%= link_to "Sign up", new_user_registration_path, class: "nav-item nav-link" %>
-         
+          <%= link_to "Login", new_user_session_path, class: "nav-item nav-link" %>
         <% end %>
       </ul>
     </div>
   </div>
 </nav>
-
-
-
-    
-      

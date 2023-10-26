@@ -1,8 +1,15 @@
 
 
 <%# <%= link_to "Log new climbing session", new_log_outdoor_climb_url %> 
-
-<h1>Previous Outdoor Climbing Sessions</h1>
+<main>
+    <section class="py-5 text-left container">
+      <div class="row py-lg-5">
+        <div class="col-lg-6 col-md-8 mx-auto">
+          <h1 class="fw-light">  Previous Outdoor Climbing Sessions </h1>
+          
+          
+          </p>
+        
 
 <% if user_signed_in? %>
   <ul>
@@ -11,7 +18,7 @@
       <% @log_climbs.each do |log_climb| %>
         <li>
           <%= log_climb.date %> - <%= log_climb.location %> - <%= log_climb.climbing_type %>
-          <%= link_to "Edit", edit_log_outdoor_climb_url(log_climb) %>
+          <%= link_to "Edit", edit_log_outdoor_climb_url(log_climb) %> 
           <%# <%= link_to 'Delete', log_climb, method: :delete %>
           <ul>
             <% if log_climb.individual_outdoor_climbs.present? %>
@@ -27,11 +34,16 @@
         </li>
       <% end %>
     </ul>
-
-  <%= link_to "Log new climbing session", new_log_outdoor_climb_path %><br>
+    <p class="lead text-muted">Looks like you haven't logged any outdoor climbs,<br>
+  <%= link_to "log a new climbing session here", new_log_outdoor_climb_path %></p>
+          
+       
+  <br>
   <% else %>
-    <p>Please sign in to see previous logged climbs.</p>
-    <%= link_to "Login", new_user_session_path %>
+    <p class="lead text-muted">Please sign in to see previous logged climbs.
+    <%= link_to "Login", new_user_session_path %></p>
   <% end %>
 
 
+</div>
+      </div>
