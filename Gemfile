@@ -28,7 +28,7 @@ gem "jbuilder"
 
 gem "sassc-rails"
 
-gem "bootstrap"
+gem 'bootstrap'
 
 gem 'devise', '~> 4.9.2'
 
@@ -36,6 +36,8 @@ gem 'jquery-rails'
 gem 'cocoon'
 
 gem 'webpacker', '~> 5.0'  
+
+gem 'carrierwave'
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
@@ -78,3 +80,7 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+gem "chartkick", "~> 5.0"
+
+gem "groupdate", "~> 6.4"

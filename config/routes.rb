@@ -16,10 +16,13 @@ Rails.application.routes.draw do
     collection do
       get :filter
     end
+    member do
+      delete :destroy_outdoor_climbing
+    end
   end
 
   resources :individual_outdoor_climbs, only: [:index, :new, :create, :update, :destroy]
-
+  resources :images
 
 
 end

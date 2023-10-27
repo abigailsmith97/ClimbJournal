@@ -7,7 +7,7 @@ class OutdoorClimbing < ApplicationRecord
                                     allow_destroy: true,
                                     reject_if: proc { |att| att['climb_name'].blank? || ['grade'].blank?}
      
-    validates :climbing_type, presence: true, inclusion: { in: ['trad', 'sport', 'bouldering'] }
+    # validates :climbing_type, presence: true, inclusion: { in: ['trad', 'sport', 'bouldering'] }
 
 end
 

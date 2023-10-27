@@ -2,3 +2,9 @@
 import "@hotwired/turbo-rails"
 import "controllers"
 import "@nathanvda/cocoon"
+
+// app/assets/javascripts/application.js
+//= require chart.js
+
+import "chartkick"
+import "Chart.bundle"
