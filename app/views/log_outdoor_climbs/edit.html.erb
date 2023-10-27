@@ -1,52 +1,60 @@
+<main>
+    <section class="py-5 text-center container">
+        <!-- <div class="row py-lg-5"> -->
+        <div class="col-lg-8 mx-auto">
+            <h1 class="fw-light">Log a new Outdoor Climbing Session</h1>
 
+            <%= form_with(model: @log_climb, url: log_outdoor_climb_path(@log_climb), method: :patch, class: "mt-4") do |f| %>
+                <div class="mb-3">
+                    <%= f.label :date, 'When did you go climbing?', class: "form-label" %>
+                    <%= f.date_field :date, class: "form-control" %>
+                </div>
 
-<%= form_with(model: @log_climb, url: log_outdoor_climb_path(@log_climb), method: :patch) do |f| %>
-  <div class="field">
-    <%= f.label :date, 'When did you go climbing?' %>
-    <%= f.date_field :date %>
-  </div>
+                <div class="mb-3">
+                    <%= f.label :climbing_type, 'Select Climbing Style', class: "form-label" %>
+                    <%= f.select :climbing_type, ['Sport', 'Trad', 'Bouldering'], {}, class: 'form-control' %>
+                </div>
 
-  <div class="field">
-    <%= f.label :climbing_type, 'Select Climbing Style' %>
-    <%= f.select :climbing_type, ['Sport', 'Trad', 'Bouldering'], {}, class: 'form-control' %>
-  </div>
+                <div class="mb-3">
+                    <%= f.label :location, 'Where did you go climbing?', class: "form-label" %>
+                    <%= f.text_field :location, class: "form-control" %>
+                </div>
 
-  <div class="field">
-    <%= f.label :location, 'Where did you go climbing?' %>
-    <%= f.text_field :location %>
-  </div>
+                <br>
 
-  <div class="individual_outdoor_climbs">
-  <%= f.fields_for :individual_outdoor_climbs do |individual_outdoor_climb| %>
-    <div class="nested-fields">
-        <%= individual_outdoor_climb.label :climb_name%>
-        <%= individual_outdoor_climb.text_area :climb_name%>
-        
-        <%= individual_outdoor_climb.label :grade%>
-        <%= individual_outdoor_climb.text_area :grade%>
+                <div class="individual_outdoor_climbs">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Climb Name</th>
+                                <th>Grade</th>
+                                <th>Climbing Style</th>
+                                <th>Climbing Partner</th>
+                                <th>Notes</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <%= f.fields_for :individual_outdoor_climbs do |individual_outdoor_climb| %>
+                                <tr class="nested-fields">
+                                    <td><%= individual_outdoor_climb.text_field :climb_name, class: "form-control" %></td>
+                                    <td><%= individual_outdoor_climb.text_field :grade, class: "form-control" %></td>
+                                    <td><%= individual_outdoor_climb.text_field :climbing_style, class: "form-control" %></td>
+                                    <td><%= individual_outdoor_climb.text_field :climbing_partner, class: "form-control" %></td>
+                                    <td><%= individual_outdoor_climb.text_field :notes, class: "form-control" %></td>
+                                    <td><%= link_to_remove_association "Delete", individual_outdoor_climb, class: "btn btn-danger btn-sm" %></td>
+                                </tr>
+                            <% end %>
+                        </tbody>
+                    </table>
+                </div>
 
-        <%= individual_outdoor_climb.label :climbing_style%>
-        <%= individual_outdoor_climb.text_area :climbing_style%>
+                <%= link_to_add_association "Add Climb", f, :individual_outdoor_climbs, data: { association_insertion_node: '.individual_outdoor_climbs tbody', association_insertion_method: :append }, class: "btn btn-primary mt-3" %>
+                <%= link_to 'Delete', log_outdoor_climb_path(@log_climb), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger mt-3" %>
 
-        <%= individual_outdoor_climb.label :tick%>
-        <%= individual_outdoor_climb.check_box :tick%>
-
-        <%= individual_outdoor_climb.label :notes%>
-        <%= individual_outdoor_climb.text_area :notes%>
-
-        <%= individual_outdoor_climb.label :climbing_partner %>
-        <%= individual_outdoor_climb.text_area :climbing_partner %>
-
-        <%= individual_outdoor_climb.hidden_field :_destroy %>
-        <%= link_to_remove_association "Delete", individual_outdoor_climb %>
-
-    </div>
-    <% end %>
-  </div>
-
-  <%= link_to_add_association "add climb", f, :individual_outdoor_climbs, data: { association_insertion_node: '.individual_outdoor_climbs', association_insertion_method: :append } %>
-  <%= link_to 'Delete', log_outdoor_climb_path(@log_climb), method: :delete, data: { confirm: 'Are you sure?' } %>
-
-  <%= f.submit "Save Climb", class: "btn-primary border-0 rounded-pill shadow p-3" %>
-  
-<% end %>
+                <%= f.submit "Save Climb", class: "btn btn-primary border-0 rounded-pill shadow p-3 mt-3" %>
+            <% end %>
+        </div>
+        <!-- </div> -->
+    </section>
+</main>

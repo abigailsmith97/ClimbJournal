@@ -44,6 +44,19 @@ class LogOutdoorClimbsController < ApplicationController
     end
   end
 
+  def filter
+    @climbing_type = params[:climbing_type]
+  
+    if @climbing_type == 'all'
+      @log_climbs = OutdoorClimbing.order(date: :desc)
+    else
+      
+      @log_climbs = OutdoorClimbing.where(climbing_type: @climbing_type).order(date: :desc)
+    end
+  
+    render :filter
+  end
+
   private
 
   def log_climb_params
