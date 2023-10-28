@@ -9,7 +9,7 @@ class ImagesController < ApplicationController
         redirect_to log_outdoor_climbs_path
     
       else
-        render ''
+        render 'show'
       end
     end
 

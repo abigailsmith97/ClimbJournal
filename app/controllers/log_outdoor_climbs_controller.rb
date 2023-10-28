@@ -30,11 +30,12 @@ class LogOutdoorClimbsController < ApplicationController
   end
 
   def destroy
-    OutdoorClimbing.find(params[:id]).destroy
-    IndividualOutdoorClimb.find(outdoor_climbing_id[:id]).destroy
-   
-    redirect_to log_outdoor_climb_url, notice: "Outdoor Climbing session deleted successfully."
-  end 
+    @log_climb = OutdoorClimbing.find(params[:id])
+    @log_climb.destroy
+  
+    redirect_to log_outdoor_climbs_url, notice: "Outdoor Climb was successfully destroyed."
+  end
+  
 
   def create
     @log_climb = OutdoorClimbing.new(log_climb_params)
@@ -48,7 +49,7 @@ class LogOutdoorClimbsController < ApplicationController
 
   def filter
     @climbing_type = params[:climbing_type]
-  
+    
     if @climbing_type == 'all'
       @log_climbs = OutdoorClimbing.order(date: :desc)
     else
@@ -56,6 +57,10 @@ class LogOutdoorClimbsController < ApplicationController
     end
   
     render :index
+  end
+
+  def show
+    @log_climb = OutdoorClimbing.find(params[:id])
   end
 
   private

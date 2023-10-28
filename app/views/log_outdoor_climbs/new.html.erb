@@ -42,15 +42,16 @@
       
 <br>
       <%= f.submit "Save Climb", class:"btn-primary border-0 rounded-pill shadow p-3" %>
+      <%= link_to "Add an image", new_image_path, class:"btn-primary border-0 rounded-pill shadow p-3"  %>
 
-
-    <% render 'image/new'%>
+    
 
     <% end %>
 
     <%else%>
     <p>Please login to see log new climbs.</p>
     <%= link_to "Login", new_user_session_path %>
+    
   <% end %>
   <br>
 

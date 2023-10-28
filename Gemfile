@@ -33,11 +33,14 @@ gem 'bootstrap'
 gem 'devise', '~> 4.9.2'
 
 gem 'jquery-rails'
+
 gem 'cocoon'
 
 gem 'webpacker', '~> 5.0'  
 
 gem 'carrierwave'
+
+
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"

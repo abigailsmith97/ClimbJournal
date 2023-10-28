@@ -3,7 +3,8 @@
         <div class="row py-lg-5">
             <div class="col-lg-6 col-md-8 mx-auto">
                 <h1 class="fw-light">Previous Outdoor Climbing Sessions</h1>
-
+                <%= link_to "Log a new climbing session here", new_log_outdoor_climb_path, class: "btn btn-primary mt-3" %>
+                <br>    <br>
                 <form action="<%= filter_log_outdoor_climbs_path %>" method="get" class="mb-3">
                     <div class="input-group">
                         <select class="form-select" name="climbing_type">
@@ -22,8 +23,8 @@
                         <% @log_climbs.each do |log_climb| %>
                             <li class="list-group-item">
                                 <%= log_climb.date %> - <%= log_climb.location %> - <%= log_climb.climbing_type %>
-                                <%= link_to "Edit", edit_log_outdoor_climb_url(log_climb), class: "btn btn-dark btn-sm mx-3" %> 
-                                <%= link_to "Delete", @log_climb, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-dark btn-sm mx-2" %>
+                                <%= link_to "Edit", edit_log_outdoor_climb_url(log_climb), class: "btn btn-light btn-sm float-end mx-2" %> 
+                                <%= link_to "Delete", @log_climb, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } ,class: "btn btn-light btn-sm float-end mx-2"  %>
 
                                 <%# <%= link_to 'Delete', log_climb, method: :delete %>
                                 <ul>
@@ -38,10 +39,10 @@
                                     <% end %>
                                 </ul>
                             </li>
+                            
                         <% end %>
                     </ul>
                     <%# <p class="lead text-muted">Looks like you haven't logged any outdoor climbs,<br> %>
-                        <%= link_to "Log a new climbing session here", new_log_outdoor_climb_path, class: "btn btn-primary mt-3" %>
                     </p>
                 <% else %>
                     <p class="lead text-muted">Please sign in to see previous logged climbs.
@@ -53,4 +54,5 @@
 </main>
 
 
-<% render 'show' %>
+<%# <%= render 'form', image: @image %> 
+
