@@ -23,7 +23,7 @@ Rails.application.routes.draw do
 
   resources :individual_outdoor_climbs, only: [:index, :new, :create, :update, :destroy]
 
-  resources :images, only: [:new, :show, :create]
+  resources :images, only: [:index, :new, :show, :create, :destroy]
 
 
 end

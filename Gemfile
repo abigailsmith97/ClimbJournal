@@ -38,8 +38,6 @@ gem 'cocoon'
 
 gem 'webpacker', '~> 5.0'  
 
-gem 'carrierwave'
-
 
 
 # Use Redis adapter to run Action Cable in production
@@ -87,3 +85,7 @@ end
 gem "chartkick", "~> 5.0"
 
 gem "groupdate", "~> 6.4"
+
+gem 'carrierwave'
+
+gem 'mini_magick'

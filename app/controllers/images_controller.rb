@@ -6,20 +6,19 @@ class ImagesController < ApplicationController
     def create
       @image = Image.new(image_params)
       if @image.save
-        redirect_to log_outdoor_climbs_path
-    
+        redirect_to log_outdoor_climbs_path, notice: "Image uploaded successfully."
       else
-        render 'show'
+        render 'new'
       end
     end
-
+  
     def show
-        @image = Image.all
-      end
+      @image = Image.find(params[:id])
+    end
   
     private
   
     def image_params
-      params.require(:image).permit(:title, :image)
+      params.require(:image).permit(:title, :image, :outdoor_climbing_id)
     end
   end

@@ -317,6 +317,7 @@ DEPENDENCIES
   importmap-rails
   jbuilder
   jquery-rails
+  mini_magick
   pg (~> 1.4.5)
   puma (>= 5.0)
   rails (~> 7.1.1)

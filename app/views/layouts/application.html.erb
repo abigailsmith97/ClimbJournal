@@ -2,8 +2,9 @@
 <html>
 <body>
    <%= render '/shared/navbar' %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+   <br>
+    <%= content_tag :div, notice, class: "alert alert-success text-center" if notice %>
+    <%= content_tag :div, alert, class: "alert alert-danger text-center" if alert %>  
     
   </body>
 
@@ -16,7 +17,7 @@
    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
    <%= javascript_importmap_tags %>
 
-<  %= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
  </head>
 

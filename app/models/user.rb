@@ -7,4 +7,5 @@ class User < ApplicationRecord
 
   #validates :email, uniqueness: true
   has_many :log_climbs, class_name: 'OutdoorClimbing'
+ # has_many :outdoor_climbings, class_name: 'OutdoorClimbing' 
 end

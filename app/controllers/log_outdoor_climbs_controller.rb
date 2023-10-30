@@ -1,7 +1,7 @@
 class LogOutdoorClimbsController < ApplicationController
   
   def index
-    @log_climbs = OutdoorClimbing.all
+    @log_climbs = OutdoorClimbing.order(date: :desc)
     
   end
  
@@ -13,7 +13,7 @@ class LogOutdoorClimbsController < ApplicationController
 
   def update
     @log_climb = OutdoorClimbing.find(params[:id])
-  
+    
     if @log_climb.update(log_climb_params)
       redirect_to log_outdoor_climbs_path, notice: "Climb updated successfully!"
     else
@@ -33,17 +33,17 @@ class LogOutdoorClimbsController < ApplicationController
     @log_climb = OutdoorClimbing.find(params[:id])
     @log_climb.destroy
   
-    redirect_to log_outdoor_climbs_url, notice: "Outdoor Climb was successfully destroyed."
+    redirect_to log_outdoor_climbs_url, notice: "Your log was successfully deleted."
   end
   
 
   def create
-    @log_climb = OutdoorClimbing.new(log_climb_params)
+    @log_climb = current_user.log_climbs.build(log_climb_params)
   
     if @log_climb.save
       redirect_to log_outdoor_climbs_url, notice: "Climb logged successfully!"
     else
-      redirect_to log_outdoor_climbs_url
+      render :new  # Render the new template if there are validation errors
     end
   end
 
@@ -66,6 +66,6 @@ class LogOutdoorClimbsController < ApplicationController
   private
 
   def log_climb_params
-    params.require(:outdoor_climbing).permit(:date, :climbing_type, :location, individual_outdoor_climbs_attributes:[:id, :climb_name, :grade, :climbing_style, :tick, :notes, :climbing_partner, :_destroy])
+    params.require(:outdoor_climbing).permit(:date, :climbing_type, :location, images_attributes: [:id, :url, :_destroy], individual_outdoor_climbs_attributes:[:id, :climb_name, :grade, :climbing_style, :tick, :notes, :climbing_partner, :_destroy])
   end
 end
