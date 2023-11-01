@@ -1,6 +1,7 @@
 class ImagesController < ApplicationController
     def new
       @image = Image.new
+      @log_climb = OutdoorClimbing.find(params[:id])
     end
 
     def create
@@ -22,7 +23,7 @@ class ImagesController < ApplicationController
     def index
       @images = Dir.glob("public/uploads/")
     end
-    
+
     # def display
     #   @image_folder_path = Rails.root.join('public', 'uploads')
     #   @images = Dir.glob(File.join(@image_folder_path, '**', '*.{jpg,png,gif}'))

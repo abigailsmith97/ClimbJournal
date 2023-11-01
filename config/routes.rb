@@ -25,5 +25,4 @@ Rails.application.routes.draw do
 
   resources :images, only: [:index, :new, :show, :create, :destroy, :display]
 
-
 end
