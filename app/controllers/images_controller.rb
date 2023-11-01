@@ -28,7 +28,9 @@ class ImagesController < ApplicationController
       
     end
   
-
+    def index
+      @images = Dir.glob("public/uploads/")
+    end
     # def display
     #   @image_folder_path = Rails.root.join('public', 'uploads')
     #   @images = Dir.glob(File.join(@image_folder_path, '**', '*.{jpg,png,gif}'))
