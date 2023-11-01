@@ -1,3 +1,17 @@
+<%# <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('saveClimbButton').addEventListener('click', function(event) {
+      event.preventDefault(); // Prevent the default form submission
+      
+      // Submit the climbing session form
+      document.getElementById('log_climb_form').submit();
+
+      // Submit the image upload form
+      document.getElementById('image_upload_form').submit();
+    });
+  });
+</script> %>
+
 <main>
     <section class="py-5 text-center container">
       <div class="row py-lg-5">
@@ -12,7 +26,8 @@
 
 <% if user_signed_in? %>
   
-  <%= form_with(model: @log_climb, url: log_outdoor_climbs_path) do |f| %>
+  <%= form_with(model: @log_climb, url: log_outdoor_climbs_path, id: "log_climb_form") do |f| %>
+
     <div class="field">
       <%= f.label :date, 'When did you go climbing?' %>
       <%= f.date_field :date %>
@@ -28,8 +43,9 @@
       <%= f.label :location, 'Where did you go climbing?' %>
       <%= f.text_field :location %>
     </div>
-
-
+    <br>
+    <%= link_to_add_association "Add a climb", f, :individual_outdoor_climbs, data: {association_insertion_node: '.individual_outdoor_climbs', association_insertion_method: :append} ,class: "btn btn-light btn-sm mx-2" %>
+      
 
     <div class="individual_outdoor_climbs">
           <%= f.fields_for :individual_outdoor_climbs do |individual_outdoor_climb| %>
@@ -38,11 +54,33 @@
           <% end %>
       </div>
       <br>
-      <%= link_to_add_association "Add a climb", f, :individual_outdoor_climbs, data: {association_insertion_node: '.individual_outdoor_climbs', association_insertion_method: :append} ,class: "btn btn-light btn-sm mx-2" %>
-      <%= link_to "Add an image", new_image_path, class: "btn btn-light btn-sm mx-2"  %><br>
+      
+      <section class="py-5 text-center container">
+                <div class="row py-lg-5">
+                    <div class="col-lg-6 col-md-8 mx-auto">
+
+                    <%= form_with(model: @image, local: true, html: { multipart: true }, id: "image_upload_form") do |form| %>
+
+                    <div class="form-group">
+                        <%= form.label :title, class: "control-label" %>
+                        <%= form.text_field :title, class: "form-control" %>
+                    </div>
+                    <div class="form-group">
+                        <%= form.label :image, class: "control-label" %>
+                        <%= form.file_field :image, class: "form-control" %>
+                    </div>
+                    <%= f.submit "Upload", class: "btn btn-primary" %>
+
+                    <% end %>
+
+
+
+           <%# <%= f.submit "Save Climb", class: "btn btn-dark mt-3" %> 
       
 <br>
-      <%= f.submit "Save Climb", class:"btn-primary border-0 rounded-pill shadow p-3" %>
+<br>
+
+      <%= f.submit "Save Climb", class:"btn-primary border-0 rounded-pill shadow p-3", id: "saveClimbButton" %>
       
 
     
@@ -64,3 +102,4 @@
         </div>
       </div>
     </section>
+

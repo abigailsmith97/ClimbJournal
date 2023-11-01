@@ -89,3 +89,5 @@ gem "groupdate", "~> 6.4"
 gem 'carrierwave'
 
 gem 'mini_magick'
+
+gem 'rmagick'

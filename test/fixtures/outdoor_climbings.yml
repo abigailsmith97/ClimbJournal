@@ -2,14 +2,14 @@
 
 one:
   date: 2023-10-20
-  sport: false
-  trad: false
-  bouldering: false
+#   sport: false
+#   trad: false
+#   bouldering: false
   location: MyString
 
-two:
-  date: 2023-10-20
-  sport: false
-  trad: false
-  bouldering: false
-  location: MyString
+# two:
+#   date: 2023-10-20
+#   sport: false
+#   trad: false
+#   bouldering: false
+#   location: MyString

@@ -40,7 +40,7 @@
                             <td><%= individual_outdoor_climb.text_field :climbing_style, class: "form-control" %></td>
                             <td><%= individual_outdoor_climb.text_field :climbing_partner, class: "form-control" %></td>
                             <td><%= individual_outdoor_climb.text_field :notes, class: "form-control" %></td>
-                            <td><%= link_to_remove_association "Delete", individual_outdoor_climb, class: "btn btn-danger btn-sm" %></td>
+                            <td><%= link_to_remove_association "Delete", individual_outdoor_climb, class: "btn btn-dark mt-3" %></td>
                             </tr>
                         <% end %>
                         </tbody>
@@ -48,12 +48,29 @@
                     </div>
 
                 <%# <%= link_to_add_association "Add Climb", f, :individual_outdoor_climbs, data: { association_insertion_node: '.individual_outdoor_climbs tbody', association_insertion_method: :append }, class: "btn btn-primary mt-3" %>
-                <%= link_to_add_association "Add Climb", f, :individual_outdoor_climbs, data: { association_insertion_node: '.individual_outdoor_climbs', association_insertion_method: :append, wrap_object: 'td' }, class: "btn btn-primary mt-3" %>
-                <%= button_to "Delete", log_outdoor_climb_path(@log_climb), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete, class: "btn btn-primary mt-3" %>
-                                  
-                <%= f.submit "Save Climb", class: "btn btn-primary border-0 rounded-pill shadow p-3 mt-3" %>
-            <% end %>
+                <%= link_to_add_association "Add Climb", f, :individual_outdoor_climbs, data: { association_insertion_node: '.individual_outdoor_climbs', association_insertion_method: :append, wrap_object: 'td' }, class: "btn btn-light mt-3" %>
+                                 
+                
+                <section class="py-5 text-center container">
+                <div class="row py-lg-5">
+                    <div class="col-lg-6 col-md-8 mx-auto">
+
+                    <%= form_with(model: @image, local: true, html: { multipart: true }) do |form| %>
+                    <div class="form-group">
+                        <%= form.label :title, class: "control-label" %>
+                        <%= form.text_field :title, class: "form-control" %>
+                    </div>
+                    <div class="form-group">
+                        <%= form.label :image, class: "control-label" %>
+                        <%= form.file_field :image, class: "form-control" %>
+                    </div>
+                    <%= form.submit "Upload", class: "btn btn-primary" %>
+                    <% end %>
+           <%= f.submit "Save Climb", class: "btn btn-dark mt-3" %>
+           <% end %>
         </div>
+        <%= button_to "Delete", log_outdoor_climb_path(OutdoorClimbing.find(params[:id])), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete, class: "btn btn-dark mt-3" %>
+       
         <!-- </div> -->
     </section>
 </main>

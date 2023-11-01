@@ -3,19 +3,37 @@ class ImagesController < ApplicationController
       @image = Image.new
     end
   
+    # def new
+    #   @images = Image.all
+    #   @log_climbs = OutdoorClimbing.where(user_id: current_user.id).order(date: :desc)
+    # end
+
     def create
       @image = Image.new(image_params)
+      @log_climbs = OutdoorClimbing.where(user_id: current_user.id).order(date: :desc)
+
       if @image.save
-        redirect_to log_outdoor_climbs_path, notice: "Image uploaded successfully."
+        # notice: "Image uploaded successfully."
       else
-        render 'new'
+        render 'index'
       end
     end
   
     def show
-      @image = Image.find(params[:id])
+      @log_climbs = OutdoorClimbing.where(user_id: current_user.id).order(date: :desc)
+        
+    #   @image = Image.find(params[:id])
+      @images = Image.all 
+      
     end
   
+
+    def display_images
+        @image_folder_path = Rails.root.join('public', 'images')
+        @images = Dir.glob(File.join(@image_folder_path, '*'))
+      end
+
+
     private
   
     def image_params

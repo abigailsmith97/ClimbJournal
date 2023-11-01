@@ -2,7 +2,9 @@ class LogOutdoorClimbsController < ApplicationController
   
   def index
     @log_climbs = OutdoorClimbing.order(date: :desc)
-    
+
+    @image_folder_path = Rails.root.join('public', 'images')
+    @images = Dir.glob(File.join(@image_folder_path, '*'))
   end
  
 
@@ -26,13 +28,13 @@ class LogOutdoorClimbsController < ApplicationController
     @individual_outdoor_climbs = IndividualOutdoorClimb.all
     @log_climb = OutdoorClimbing.new
     @log_climbs = OutdoorClimbing.all
-
+    
   end
 
   def destroy
     @log_climb = OutdoorClimbing.find(params[:id])
     @log_climb.destroy
-  
+    
     redirect_to log_outdoor_climbs_url, notice: "Your log was successfully deleted."
   end
   

@@ -7,8 +7,8 @@
           <h1 class="fw-light">  Welcome, <%= current_user.email %></h1></h1>
           <p class="lead text-muted">Start logging your climbing sessions here and track your progress.</p>
           <p>
-            <a href="log_outdoor_climbs/new" class="btn btn-indigo my-2">Log your Outdoor Climbing Session</a>
-            <a href="log_outdoor_climbs" class="btn btn-indigo my-2">See your previous climbs</a>
+            <a href="log_outdoor_climbs/new" class="btn btn-light my-2">Log your Outdoor Climbing Session</a>
+            <a href="log_outdoor_climbs" class="btn btn-light my-2">See your previous climbs</a>
           </p>
         </div>
       </div>
@@ -17,7 +17,6 @@
 
 
 <% else %>
-  <!-- inside app/views/welcome/index.html.erb -->  
   <div class="collapse" id="navbarToggleExternalContent">
     <div class="bg-dark p-4">
       <h5 class="text-white h4">Menu</h5>
@@ -35,9 +34,24 @@
           <a href="users/sign_up" class="btn btn-primary my-2">Sign Up</a>
           <p>
           
-
+  <div class="container">
+    <% images.each do |row| %>
+      <div class="row mb-4">
+        <% row.each do |image_path| %>
+          <div class="col-md-4">
+            <%= image_tag @image.image.url if @image.present? %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+  
 <% end %>
 
         </div>
       </div>
     </section>
+
+
+
+
