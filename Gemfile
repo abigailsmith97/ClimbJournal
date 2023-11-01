@@ -91,3 +91,5 @@ gem 'carrierwave'
 gem 'mini_magick'
 
 gem 'rmagick'
+
+gem "image_processing", ">= 1.2"

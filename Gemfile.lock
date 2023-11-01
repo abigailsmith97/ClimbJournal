@@ -317,6 +317,7 @@ DEPENDENCIES
   devise (~> 4.9.2)
   error_highlight (>= 0.4.0)
   groupdate (~> 6.4)
+  image_processing (>= 1.2)
   importmap-rails
   jbuilder
   jquery-rails

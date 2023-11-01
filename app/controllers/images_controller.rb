@@ -2,11 +2,6 @@ class ImagesController < ApplicationController
     def new
       @image = Image.new
     end
-  
-    # def new
-    #   @images = Image.all
-    #   @log_climbs = OutdoorClimbing.where(user_id: current_user.id).order(date: :desc)
-    # end
 
     def create
       @image = Image.new(image_params)
@@ -20,10 +15,6 @@ class ImagesController < ApplicationController
     end
   
     def show
-      # @log_climbs = OutdoorClimbing.where(user_id: current_user.id).order(date: :desc)
-        
-      # @image = Image.find(params[:id])
-      
       @images = Dir.glob("public/uploads/")
       
     end
@@ -31,6 +22,7 @@ class ImagesController < ApplicationController
     def index
       @images = Dir.glob("public/uploads/")
     end
+    
     # def display
     #   @image_folder_path = Rails.root.join('public', 'uploads')
     #   @images = Dir.glob(File.join(@image_folder_path, '**', '*.{jpg,png,gif}'))
