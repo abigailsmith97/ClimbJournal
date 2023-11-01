@@ -34,17 +34,7 @@
           <a href="users/sign_up" class="btn btn-primary my-2">Sign Up</a>
           <p>
           
-  <div class="container">
-    <% images.each do |row| %>
-      <div class="row mb-4">
-        <% row.each do |image_path| %>
-          <div class="col-md-4">
-            <%= image_tag @image.image.url if @image.present? %>
-          </div>
-        <% end %>
-      </div>
-    <% end %>
-  </div>
+  
   
 <% end %>
 

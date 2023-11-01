@@ -1,13 +1,13 @@
-<% if user_signed_in? %>
+<%# <% if user_signed_in? %>
 
-  <% @log_climbs.where(user_id: current_user.id).each do |climb| %>
+  <%# <% @log_climbs.where(user_id: current_user.id).each do |climb| %> 
 
-    <p>Climb: <%= climb.location %></p>
-    <p>Date: <%= climb.date %></p>
+    <%# <p>Climb: <%= climb.location </p> %>
+    <%# <p>Date: <%= climb.date </p> %>
 
-    <% climb.images.each do |image| %>
-      <%= image_tag @image.image.url if @image.present? %>
-    <% end %>
+    <%# <% climb.images.each do |image| %> 
+      <%# <%= image_tag @image.image.url if @image.present? %> 
+    <%# <% end %> 
 
-  <% end %>
-<% end %>
+  <%# <% end %> 
+<%# <% end %>  

@@ -1,0 +1,10 @@
+<!-- app/views/images/display.html.erb -->
+
+<h1>Display Images</h1>
+
+<div class="image-grid">
+  <% @images.each do |image_path| %>
+    <%= image_tag image_path.gsub("#{Rails.root}/public", '') %>
+    
+  <% end %>
+</div>
