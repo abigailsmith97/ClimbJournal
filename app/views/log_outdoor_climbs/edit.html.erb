@@ -27,7 +27,7 @@
 
                 <div class="individual_outdoor_climbs">
                     <table class="table table-bordered">
-                        <%# <thead>
+                        <thead>
                         <tr>
                             <th>Climb Name</th>
                             <th>Grade</th>
@@ -36,16 +36,17 @@
                             <th>Notes</th>
                             <th></th>
                         </tr>
-                        </thead> %>
+                        </thead>
                         <tbody>
                         <%= f.fields_for :individual_outdoor_climbs do |individual_outdoor_climb| %>
                             <tr class="nested-fields">
+
                             <td><%= individual_outdoor_climb.text_field :climb_name, class: "form-control" %></td>
                             <td><%= individual_outdoor_climb.text_field :grade, class: "form-control" %></td>
                             <td><%= individual_outdoor_climb.text_field :climbing_style, class: "form-control" %></td>
                             <td><%= individual_outdoor_climb.text_field :climbing_partner, class: "form-control" %></td>
                             <td><%= individual_outdoor_climb.text_field :notes, class: "form-control" %></td>
-                            <td><%= link_to_remove_association "Delete", individual_outdoor_climb, class: "btn btn-dark mt-3" %></td>
+                            <td><%= link_to_remove_association "Delete this climb", individual_outdoor_climb, class: "btn btn-secondary mt-3" %></td>
                             </tr>
                         <% end %>
                         </tbody>
@@ -53,7 +54,7 @@
                     </div>
 
                 <%# <%= link_to_add_association "Add Climb", f, :individual_outdoor_climbs, data: { association_insertion_node: '.individual_outdoor_climbs tbody', association_insertion_method: :append }, class: "btn btn-primary mt-3" %>
-                <%= link_to_add_association "Add Climb", f, :individual_outdoor_climbs, data: { association_insertion_node: '.individual_outdoor_climbs', association_insertion_method: :append, wrap_object: 'td' }, class: "btn btn-light mt-3" %>
+                <%= link_to_add_association "Add a new climb to the log", f, :individual_outdoor_climbs, data: { association_insertion_node: '.individual_outdoor_climbs', association_insertion_method: :append, wrap_object: 'td' }, class: "btn btn-light mt-3" %>
                                  
                 
                 <%# <section class="py-5 text-center container">
@@ -71,11 +72,12 @@
                     <%# </div> %>
                     <%# <%= form.submit "Upload", class: "btn btn-primary" %> 
                     <%# <% end %>
-            <%= f.submit "Save Climb", class: "btn btn-dark mt-3" %>
+                    <br>
+            <%= f.submit "Save Climb", class: "btn btn-secondary mt-3" %>
             <% end %> 
         </div>
        
-        <%= button_to "Delete", log_outdoor_climb_path(OutdoorClimbing.find(params[:id])), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete, class: "btn btn-dark mt-3" %>
+        <%= button_to "Delete entire log", log_outdoor_climb_path(OutdoorClimbing.find(params[:id])), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete, class: "btn btn-secondary mt-3" %>
        
         <!-- </div> -->
     </section>

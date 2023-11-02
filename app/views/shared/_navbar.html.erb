@@ -11,22 +11,23 @@
   </button>
   <div class="collapse navbar-collapse" id="main_nav">
 	<ul class="navbar-nav">
-		
+		<% if user_signed_in? %>
 		<%= link_to "Outdoor Climbing", log_outdoor_climbs_path, class: "nav-item nav-link" %>
-    <%= link_to "Gallery", images_path, class: "nav-item nav-link" %>    
+    <%= link_to "Gallery", log_outdoor_climbs_path, class: "nav-item nav-link" %>    
         
-        <li>
+    <li>
 
-        <ul class="navbar-nav mb-2 mb-lg-0">
-        <% if user_signed_in? %>
-          <%= link_to current_user.email, edit_user_registration_path, class: "nav-item nav-link" %>
-          <%= button_to "Sign out", destroy_user_session_path, method: :delete, class: "nav-item nav-link" %>
-        <% else %>
-          <%= link_to "Sign up", new_user_registration_path, class: "nav-item nav-link" %>
-          <%= link_to "Login", new_user_session_path, class: "nav-item nav-link" %>
-        <% end %>
-		    </ul>
-	      <li/>
+    <ul class="navbar-nav mb-2 mb-lg-0">
+    
+      <%= link_to "Account", edit_user_registration_path, class: "nav-item nav-link" %>
+      <%= button_to "Sign out", destroy_user_session_path, method: :delete, class: "nav-item nav-link" %>
+    <% else %>
+      <%= link_to "Login", new_user_session_path, class: "nav-item nav-link" %>
+      <%= link_to "Sign up", new_user_registration_path, class: "nav-item nav-link" %>
+      
+    <% end %>
+    </ul>
+    <li/>
   </div> <!-- navbar-collapse.// -->
  </div> <!-- container-fluid.// -->
 </nav>

@@ -42,6 +42,12 @@ class LogOutdoorClimbsController < ApplicationController
     redirect_to log_outdoor_climbs_url, notice: "Your log was successfully deleted."
   end
   
+  def display
+    @log_climb = OutdoorClimbing.find(params[:id])
+    @log_climbs = OutdoorClimbing.all
+    @log_climb.main_image.attach(params[:outdoor_climbing][:main_image])
+  end
+
 
   def create
     @log_climb = current_user.log_climbs.build(log_climb_params)
@@ -69,17 +75,17 @@ class LogOutdoorClimbsController < ApplicationController
     @log_climb = OutdoorClimbing.find(params[:id])
   end
 
-  def update_image
-    @log_climb =  # Assuming you have a current_user method
+  # def update_image
+  #   @log_climb =  # Assuming you have a current_user method
     
-    if @user.avatar.attach(params[:avatar])
-      flash[:notice] = "Avatar updated successfully"
-    else
-      flash[:alert] = "Error updating avatar"
-    end
+  #   if @user.avatar.attach(params[:avatar])
+  #     flash[:notice] = "Avatar updated successfully"
+  #   else
+  #     flash[:alert] = "Error updating avatar"
+  #   end
     
-    redirect_to edit_user_path(@user) # Assuming you have an edit_user_path
-  end
+  #   redirect_to edit_user_path(@user) # Assuming you have an edit_user_path
+  # end
 
   private
 

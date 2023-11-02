@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   #get '/log_outdoor_climbs/:id', to: 'log_outdoor_climbs#index'
 
 
-  resources :log_outdoor_climbs, only: [:index, :new, :create, :edit, :update, :destroy, :show] do
+  resources :log_outdoor_climbs, only: [:index, :new, :create, :edit, :update, :destroy, :show, :display] do
     collection do
       get :filter
     end
@@ -23,6 +23,6 @@ Rails.application.routes.draw do
 
   resources :individual_outdoor_climbs, only: [:index, :new, :create, :update, :destroy]
 
-  resources :images, only: [:index, :new, :show, :create, :destroy, :display]
+  # resources :images, only: [:index, :new, :show, :create, :destroy, :display]
 
 end

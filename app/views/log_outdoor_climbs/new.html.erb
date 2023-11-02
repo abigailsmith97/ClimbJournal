@@ -24,43 +24,43 @@
 
 
 
-<% if user_signed_in? %>
-  <%= form_with(model: @log_climb, url: log_outdoor_climbs_path, local: true, multipart: true) do |f| %>
+          <% if user_signed_in? %>
+            <%= form_with(model: @log_climb, url: log_outdoor_climbs_path, local: true, multipart: true) do |f| %>
 
-  <%# <%= form_with(model: @log_climb, url: log_outdoor_climbs_path, id: "log_climb_form") do |f| %> 
+            <%# <%= form_with(model: @log_climb, url: log_outdoor_climbs_path, id: "log_climb_form") do |f| %> 
 
-    <div class="field">
-      <%= f.label :date, 'When did you go climbing?' %>
-      <%= f.date_field :date %>
-    </div>
-    <br>
-    <div class="field">
-      <%= f.label :climbing_type, 'Select Climbing Style' %>
-    <%= f.select :climbing_type, ['Sport', 'Trad', 'Bouldering'], {}, class: 'form-control' %>
-    <br>
-    </div>
+              <div class="field">
+                <%= f.label :date, 'When did you go climbing?' %>
+                <%= f.date_field :date %>
+              </div>
+              <br>
+              <div class="field">
+                <%= f.label :climbing_type, 'Select Climbing Style' %>
+              <%= f.select :climbing_type, ['Sport', 'Trad', 'Bouldering'], {}, class: 'form-control' %>
+              <br>
+              </div>
 
-    <div class="field">
-      <%= f.label :location, 'Where did you go climbing?' %>
-      <%= f.text_field :location %>
-    </div>
+              <div class="field">
+                <%= f.label :location, 'Where did you go climbing?' %>
+                <%= f.text_field :location %>
+              </div>
 
-      <br>
-  <div class="field">
-    <%= f.label :main_image, 'Upload an image' %>
-    <%= f.file_field :main_image %>
-  </div>
-    <br>
-    <%= link_to_add_association "Add a climb", f, :individual_outdoor_climbs, data: {association_insertion_node: '.individual_outdoor_climbs', association_insertion_method: :append} ,class: "btn btn-light btn-sm mx-2" %>
-      
+                <br>
+              <div class="field">
+                <%= f.label :main_image, 'Upload an image' %>
+                <%= f.file_field :main_image %>
+              </div>
+              <br>
+              <%= link_to_add_association "Add a climb", f, :individual_outdoor_climbs, data: {association_insertion_node: '.individual_outdoor_climbs', association_insertion_method: :append} ,class: "btn btn-light btn-sm mx-2" %>
+                
 
-    <div class="individual_outdoor_climbs">
-          <%= f.fields_for :individual_outdoor_climbs do |individual_outdoor_climb| %>
-          <%= render partial 'individual_outdoor_climb_fields', f: individual_outdoor_climb %>
-    
-          <% end %>
-      </div>
-      <br>
+              <div class="individual_outdoor_climbs">
+                  <%= f.fields_for :individual_outdoor_climbs do |individual_outdoor_climb| %>
+                  <%= render partial 'individual_outdoor_climb_fields', f: individual_outdoor_climb %>
+              
+            <% end %>
+                </div>
+                <br>
       
       <%# <section class="py-5 text-center container">
                 <div class="row py-lg-5">
@@ -81,11 +81,12 @@
 
            <%# <%= f.submit "Save Climb", class: "btn btn-dark mt-3" %> 
       
-<br>
-<br>
+      <br>
+      <br>
 
       <%= f.submit "Save Climb", class:"btn-primary border-0 rounded-pill shadow p-3", id: "saveClimbButton" %>
-      
+      <br><br><br>
+      <%= link_to "Back", :back, class: "btn btn-secondary" %>
 
     
 
