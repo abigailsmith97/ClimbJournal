@@ -1,8 +1,37 @@
+ <section class="text-center container">
+      <div class="row py-lg-5">
+        <div class="col-lg-6 col-md-8 mx-auto">
+          <h1 class="fw-light">  Welcome to your Climbing Gallery </h1>
+        </div>
+      </div>
+    </section>
 
 <% if user_signed_in? %>
+<section class="text-center container">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body">
+          <p class="card-text">To add a new image to the gallery, first log a new climbing session and attach the image to the session.</p>
+          <%= link_to "Log a new climbing session here", new_log_outdoor_climb_path, class: "btn btn-secondary c-2" %> 
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body">
+          <p class="card-text">To add or replace an image to an existing climbing session, edit your previous session and add an image</p>
+          <%= link_to "See your previous climbs here", log_outdoor_climbs_path, class: "btn btn-secondary c-2" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<br>
+
   <div class="container">
     <div class="row">
-      <% log_climbs.each do |log_climb| %>
+      <% @log_climbs.where(user_id: current_user.id).each do |log_climb| %>
         <% if log_climb.main_image.attached? %>
           <div class="col-md-4 mb-4">
             <div class="card">
@@ -17,4 +46,7 @@
       <% end %>
     </div>
   </div>
+  <%else%>
+    <p class="lead text-muted">Please sign in to see previous logged climbs.<br>
+    <%= link_to "Login", new_user_session_path, class: "btn btn-dark c-2" %></p>
 <% end %>
