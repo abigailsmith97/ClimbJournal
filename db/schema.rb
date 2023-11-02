@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_01_114721) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_02_153554) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -70,6 +70,14 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_01_114721) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "nameofusers", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_nameofusers_on_user_id"
+  end
+
   create_table "outdoor_climbings", force: :cascade do |t|
     t.date "date"
     t.string "location"
@@ -96,5 +104,6 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_01_114721) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "images", "outdoor_climbings"
   add_foreign_key "individual_outdoor_climbs", "outdoor_climbings"
+  add_foreign_key "nameofusers", "users"
   add_foreign_key "outdoor_climbings", "users"
 end

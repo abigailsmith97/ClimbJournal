@@ -4,7 +4,16 @@
     <section class="py-5 text-center container">
       <div class="row py-lg-5">
         <div class="col-lg-6 col-md-8 mx-auto">
-          <h1 class="fw-light">  Welcome, <%= current_user.email %></h1></h1>
+
+
+        <% if @nameofuser.present? %>
+          <h1>Hello, <%= @nameofuser.name %>!</h1>
+        <% else %>
+          <h1>Welcome, <%= current_user.email%> </h1>
+          <% end %>
+
+
+        
           <p class="lead text-muted">Start logging your climbing sessions here and track your progress.</p>
           <p>
             <a href="log_outdoor_climbs/new" class="btn btn-light my-2">Log your Outdoor Climbing Session</a>

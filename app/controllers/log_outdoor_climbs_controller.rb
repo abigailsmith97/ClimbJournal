@@ -54,7 +54,7 @@ class LogOutdoorClimbsController < ApplicationController
     if @log_climb.save
       redirect_to log_outdoor_climbs_url, notice: "Climb logged successfully!"
     else
-      render :new  # Render the new template if there are validation errors
+      render :new , alert: "Climb could not be logged"
     end
   end
 
