@@ -56,16 +56,9 @@
                         <%= link_to "Login", new_user_session_path, class: "btn btn-dark c-2" %></p>
                 <% end %>
 
-                <% @log_climbs.where(user_id: current_user.id).each do |log_climb| %>
-                    <%if @log_climb.main_image.present?%>
-                        <%= image_tag(@log_climb.main_image) %>
-                    <%end%>
-                <%end%>
-
+            
             </div>
         </div>
     </section>
 </main>
 
-
-<%# <%= image_tag log_climb.main_image %> 

@@ -2,9 +2,8 @@ class LogOutdoorClimbsController < ApplicationController
   
   def index
     @log_climbs = OutdoorClimbing.order(date: :desc)
-
-    @image_folder_path = Rails.root.join('public', 'images')
-    @images = Dir.glob(File.join(@image_folder_path, '*'))
+    
+    
   end
  
 

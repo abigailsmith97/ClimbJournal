@@ -1,0 +1,19 @@
+<% if user_signed_in? %>
+  <div class="container">
+    <div class="row">
+      <% log_climbs.each_with_index do |log_climb, index| %>
+        <% if log_climb.main_image.attached? && index < 3 %>
+          <div class="col-md-4 mb-4">
+            <div class="card">
+              <%= image_tag log_climb.main_image, class: "card-img-top" %>
+              <div class="card-body">
+                <h5 class="card-title"><%= log_climb.date %></h5>
+                <p class="card-text"><%= log_climb.location %></p>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+<% end %>

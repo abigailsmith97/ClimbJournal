@@ -69,4 +69,13 @@ Rails.application.configure do
 
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
+
+  # config/environments/development.rb
+  config.active_storage.variant_processor = :vips
+  config.active_storage.variant_quality = 100
+  config.active_storage.variant_options = { strip: :all, interlace: :plane, quality: 85 }
+  config.active_storage.variant_resize_to_limit = [800, 800]
+
 end
+
+

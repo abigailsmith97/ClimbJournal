@@ -87,6 +87,11 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
+  config.active_storage.variant_processor = :vips
+  config.active_storage.variant_quality = 100
+  config.active_storage.variant_options = { strip: :all, interlace: :plane, quality: 85 }
+  config.active_storage.variant_resize_to_limit = [800, 800]
+
   # Enable DNS rebinding protection and other `Host` header attacks.
   # config.hosts = [
   #   "example.com",     # Allow requests from example.com
