@@ -1,41 +1,29 @@
 <p style="color: green"><%= notice %></p>
 
 <h1>Locations</h1>
-
-<%= js_map [{latitude: 37.7829,
-             longitude: -122.4190,
-             label: 'My home',
-             tooltip: 'Hello!'
-            }],
-            id: "cities-map",
-            width: "800px",
-            height: "500px",
-            markers: {color: "#00FF00"},
-            tooltips: { hover: false, html: true},
-            style: "mapbox://styles/mapbox/outdoors-v12",
-            zoom: 15,
-            controls: true,
-            refresh: 60 %>
-
-
-<%= form_with url: locations_path, method: :get do |form| %>
-  <%= form.label :place, "City, Country" %>
-  <%= form.text_field :place, value: params[:place] %>
-
-  <%# <%= label :distance, "Distance, km" %>
-  <%# <%= text_field :distance, [10, 20, 30], params[:distance] %> %> %>
-
-  <%= form.submit "Search" %>
-<% end %>
-
-
-<div id="locations">
-  <% @locations.each do |location| %>
-    <%= render location %>
-    <p>
-      <%= link_to "Show this location", location %>
-    </p>
-  <% end %>
+<div id="map">
+<%= js_map [{latitude: 37.7829, longitude: -122.4190}] %>
 </div>
 
-<%= link_to "New location", new_location_path %>
+<%# <%= form_with url: locations_path, method: :get do |form| %>
+  <%# <%= form.label :place, "City, Country" %> 
+  <%# <%= form.text_field :place, value: params[:place] %> 
+
+  <%# <%= label :distance, "Distance, km" %>
+  <%# <%= text_field :distance, [10, 20, 30], params[:distance] %> 
+
+  <%# <%= form.submit "Search" %> 
+<%# <% end %> 
+
+
+<%# <div id="locations"> %>
+  <%# <% @locations.each do |location| %> 
+    <%# <%= render location %> 
+    <%# <p> %>
+      <%# <%= link_to "Show this location", location %> 
+    <%# </p> %>
+  <%# <% end %> 
+<%# </div> %>
+
+<%# <%= link_to "New location", new_location_path %> 
+<%# / %>

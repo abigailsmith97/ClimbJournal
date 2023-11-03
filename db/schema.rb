@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_03_103441) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_03_132640) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -42,15 +42,6 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_03_103441) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
-  create_table "images", force: :cascade do |t|
-    t.string "title"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "outdoor_climbing_id", null: false
-    t.string "image"
-    t.index ["outdoor_climbing_id"], name: "index_images_on_outdoor_climbing_id"
-  end
-
   create_table "individual_outdoor_climbs", force: :cascade do |t|
     t.string "climb_name"
     t.string "grade"
@@ -72,12 +63,6 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_03_103441) do
     t.datetime "updated_at", null: false
     t.index ["latitude"], name: "index_locations_on_latitude"
     t.index ["longitude"], name: "index_locations_on_longitude"
-  end
-
-  create_table "logoutdoorclimbs", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "nameofusers", force: :cascade do |t|
@@ -112,7 +97,6 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_03_103441) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "images", "outdoor_climbings"
   add_foreign_key "individual_outdoor_climbs", "outdoor_climbings"
   add_foreign_key "nameofusers", "users"
   add_foreign_key "outdoor_climbings", "users"

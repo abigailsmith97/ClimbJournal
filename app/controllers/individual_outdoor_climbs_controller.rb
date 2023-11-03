@@ -1,9 +1,9 @@
 class IndividualOutdoorClimbsController < ApplicationController
 
    
-    def index
-        @individual_outdoor_climbs = IndividualOutdoorClimb.all
-        end
+    # def index
+    #     @individual_outdoor_climbs = IndividualOutdoorClimb.all
+    #     end
      
     def edit
         @individual_outdoor_climb = IndividualOutdoorClimb.find(params[:id])

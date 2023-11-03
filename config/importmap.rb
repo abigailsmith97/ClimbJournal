@@ -10,4 +10,4 @@ pin "@nathanvda/cocoon", to: "https://ga.jspm.io/npm:@nathanvda/cocoon@1.2.14/co
 pin "chartkick", to: "chartkick.js"
 pin "Chart.bundle", to: "Chart.bundle.js"
 
-pin "mapkick/bundle", to: "mapkick.bundle.js"
+# pin "mapkick/bundle", to: "mapkick.bundle.js"

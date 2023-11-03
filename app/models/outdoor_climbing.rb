@@ -9,6 +9,8 @@ class OutdoorClimbing < ApplicationRecord
                                     allow_destroy: true,
                                     reject_if: proc { |att| att['climb_name'].blank? || ['grade'].blank?}
      
+    # geocoded_by :location
+    # after_validation :geocode
     # validates :climbing_type, presence: true, inclusion: { in: ['trad', 'sport', 'bouldering'] }
     # validate :acceptable_image
 end
