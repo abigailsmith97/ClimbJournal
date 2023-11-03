@@ -76,6 +76,9 @@ Rails.application.configure do
   config.active_storage.variant_options = { strip: :all, interlace: :plane, quality: 85 }
   config.active_storage.variant_resize_to_limit = [800, 800]
 
+
+  # ENV["MAPBOX_ACCESS_TOKEN"] = "pk.eyJ1IjoiYWZzbWl0aDEyMyIsImEiOiJjbG9panYzNHoxZjg3MnBvaXZvajExbDRyIn0.rJqkHscRJRtC5LkK7xH8Vw"
+
 end
 
 

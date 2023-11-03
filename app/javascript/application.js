@@ -9,4 +9,5 @@ import "@nathanvda/cocoon"
 import "chartkick"
 import "Chart.bundle"
 
-import "mapkick/bundle"
+// import "mapkick/bundle"
+

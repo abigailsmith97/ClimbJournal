@@ -5,7 +5,7 @@
    <br>
     <%= content_tag :div, notice, class: "alert alert-success text-center" if notice %>
     <%= content_tag :div, alert, class: "alert alert-danger text-center" if alert %>  
-    
+     <%= yield %>
   </body>
 
    <%= javascript_include_tag "jquery" %>
@@ -19,9 +19,11 @@
 
    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
+  <link href="https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.css" rel="stylesheet">
+
  </head>
 
- <%= yield %>
+
 
 </html>
 

@@ -3,10 +3,19 @@ class LocationsController < ApplicationController
 
   # GET /locations or /locations.json
   def index
-    if params[:place].present?
-      @locations = Location.near(params[:place], params[:distance] || 10, order: :distance)
-    else
-      @locations = Location.all
+    # if params[:place].present?
+    #   @locations = Location.near(params[:place], params[:distance] || 10, order: :distance)
+    # else
+    #   @locations = Location.all
+    # end
+
+    @locations = Location.all
+
+    @markers = @locations.geocoded.map do |location|
+      {
+        lat: location.latitude,
+        lng: location.longitude
+      }
     end
   end
 

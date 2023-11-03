@@ -30,7 +30,8 @@ class IndividualOutdoorClimbsController < ApplicationController
     def create
         @individual_outdoor_climbs = IndividualOutdoorClimb.all
       @individual_outdoor_climb = IndividualOutdoorClimb.new(climb_params)
-  
+      @individual_outdoor_climb.outdoor_climbing_id = OutdoorClimbing.find(params[:id])
+
       if @individual_outdoor_climb.save
         redirect_to @individual_outdoor_climb, notice: 'Climb was successfully added.'
       else
