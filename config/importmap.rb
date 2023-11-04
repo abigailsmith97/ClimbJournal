@@ -12,4 +12,4 @@ pin "Chart.bundle", to: "Chart.bundle.js"
 
 # pin "mapkick/bundle", to: "mapkick.bundle.js"
 
-# importmap pin mapbox-gl
+pin 'mapbox-gl' 

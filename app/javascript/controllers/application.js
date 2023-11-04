@@ -7,3 +7,7 @@ application.debug = false
 window.Stimulus   = application
 
 export { application }
+
+import 'mapbox-gl/dist/mapbox-gl.css';
+
+

@@ -99,3 +99,7 @@ gem "aws-sdk-s3", require: false
 # gem 'mapkick-rb'
 
 gem "geocoder", "~> 1.8"
+
+gem 'mapbox-gl-rails'
+
+gem 'importmap-rails'
