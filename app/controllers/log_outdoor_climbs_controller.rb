@@ -2,8 +2,13 @@ class LogOutdoorClimbsController < ApplicationController
   
   def index
     @log_climbs = OutdoorClimbing.order(date: :desc)
-    
-    
+
+    @markers = @log_climbs.geocoded.map do |log_climb|
+      {
+        lat: log_climb.latitude,
+        lng: log_climb.longitude
+      }
+    end
   end
  
 

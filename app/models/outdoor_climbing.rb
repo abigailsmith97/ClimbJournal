@@ -11,5 +11,8 @@ class OutdoorClimbing < ApplicationRecord
      
     # validates :climbing_type, presence: true, inclusion: { in: ['trad', 'sport', 'bouldering'] }
     # validate :acceptable_image
+
+    geocoded_by :location
+    after_validation :geocode, if: :will_save_change_to_location?
 end
 
