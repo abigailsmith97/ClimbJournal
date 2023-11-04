@@ -26,7 +26,6 @@
 
                 
                   <% @log_climbs.where(user_id: current_user.id).each do |log_climb| %>
-                    
                       <ul class="list-group">
                           <%# <% @log_climbs = OutdoorClimbing.order(date: :desc) %> 
                           <%# <% @log_climbs.each do |log_climb| %> 
@@ -75,3 +74,17 @@
     </section>
 </main>
 
+<%= js_map [{latitude: 37.7829,
+             longitude: -122.4190,
+             label: 'My home',
+             tooltip: 'Hello!'
+            }],
+            id: "cities-map",
+            width: "800px",
+            height: "500px",
+            markers: {color: "#00FF00"},
+            tooltips: { hover: false, html: true},
+            style: "mapbox://styles/mapbox/outdoors-v12",
+            zoom: 15,
+            controls: true,
+            refresh: 60 %>
