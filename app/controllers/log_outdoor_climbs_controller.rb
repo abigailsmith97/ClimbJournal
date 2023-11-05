@@ -2,7 +2,7 @@ class LogOutdoorClimbsController < ApplicationController
   
   def index
     @log_climbs = OutdoorClimbing.order(date: :desc)
-    @mapbox_access_token = ENV['MAPBOX_ACCESS_TOKEN']
+    # @mapbox_access_token = ENV['MAPBOX_ACCESS_TOKEN']
     
   end
  
