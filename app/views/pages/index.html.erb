@@ -1,16 +1,17 @@
 
-<% if user_signed_in? %>
   <main>
     <section class="py-5 text-center container">
       <div class="row py-lg-5">
         <div class="col-lg-6 col-md-8 mx-auto">
+          <%= image_tag('logo.png', alt: 'Gripped Logo', class: 'rounded-circle img-fluid w-60') %>
+          <br>
+          <% if user_signed_in? %>
+        
 
-
-        <% if @nameofuser.present? %>
-          <h1>Hello, <%= @nameofuser.name %>!</h1>
-        <% else %>
-          <h1>Welcome, <%= current_user.email%> </h1>
-          <% end %>
+        
+          <h1>Welcome, </h1>
+          <h1><%= current_user.email%> </h1>
+          
 
 
         

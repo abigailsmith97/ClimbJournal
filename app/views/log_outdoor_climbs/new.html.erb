@@ -42,7 +42,8 @@
 
               <div class="field">
                 <%= f.label :location, 'Where did you go climbing?' %>
-                <%= f.text_field :location %>
+                <p> e.g. Stanage Plantation, Peak District, UK </p>
+                <%= f.text_area :location, rows: 2, style: "width: 80%;" %> <!-- Added inline style for width -->
               </div>
 
                 <br>
