@@ -17,7 +17,7 @@
 
                 <div class="mb-3">
                     <%= f.label :location, 'Where did you go climbing?', class: "form-label" %>
-                    <%= f.text_area :location, rows: 2, style: "width: 80%;" , class: "form-control" %>
+                    <%= f.text_area :location, rows: 2, style: "width: 80%;" ,class: "form-control" %>
                 </div>
 
                 <div class="mb-3">
@@ -46,7 +46,7 @@
                             <td><%= individual_outdoor_climb.text_field :climbing_style, class: "form-control" %></td>
                             <td><%= individual_outdoor_climb.text_field :climbing_partner, class: "form-control" %></td>
                             <td><%= individual_outdoor_climb.text_field :notes, class: "form-control" %></td>
-                            <td><%= link_to_remove_association "Delete this climb", individual_outdoor_climb, class: "btn btn-secondary mt-3" %></td>
+                            <td><%= link_to_remove_association "Delete this climb", individual_outdoor_climb, class: "btn btn-secondary mt-3" ,  style:"background-color:#ff8675; border-color:#ff8675; color: white;"%></td>
                             </tr>
                         <% end %>
                         </tbody>
@@ -73,11 +73,11 @@
                     <%# <%= form.submit "Upload", class: "btn btn-primary" %> 
                     <%# <% end %>
                     <br>
-            <%= f.submit "Save Climb", class: "btn btn-secondary mt-3" %>
+            <%= f.submit "Save Climb", class: "btn btn-secondary mt-3", style:"background-color:#7e77ca; border-color:#7e77ca; color: white;" %>
             <% end %> 
         </div>
        
-        <%= button_to "Delete entire log", log_outdoor_climb_path(OutdoorClimbing.find(params[:id])), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete, class: "btn btn-secondary mt-3" %>
+        <%= button_to "Delete entire log", log_outdoor_climb_path(OutdoorClimbing.find(params[:id])), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete, class: "btn btn-secondary mt-3",  style:"background-color:#ff8675; border-color:#ff8675; color: white;"%>
        
         <!-- </div> -->
     </section>
