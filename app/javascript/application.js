@@ -8,3 +8,8 @@ import "@nathanvda/cocoon"
 
 import "chartkick"
 import "Chart.bundle"
+
+//
+//*= require mapbox-gl
+//= require_tree .
+

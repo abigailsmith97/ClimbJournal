@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   root 'pages#index'
   get 'pages/index'
   get '/gallery', to: 'pages#gallery'
+
+  get '/climbingmap', to: 'pages#climbingmap'
+
   #get 'log_outdoor_climbs', to: 'log_outdoor_climbs#new'
   #post 'log_outdoor_climbs', to: 'log_outdoor_climbs#create'
 
