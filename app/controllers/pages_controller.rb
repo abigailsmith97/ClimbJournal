@@ -8,4 +8,8 @@ class PagesController < ApplicationController
     @log_climbs = OutdoorClimbing.order(date: :desc)
   end
 
+  def climbingmap
+    @log_climbs = OutdoorClimbing.order(date: :desc)
+  end
+
 end

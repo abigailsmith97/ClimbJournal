@@ -1,28 +1,68 @@
+<!DOCTYPE html>
+<html>
 <head>
 <meta charset="utf-8">
-<title>Display a map on a webpage</title>
+<title>Set a point after Geocoder result</title>
 <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
 <link href="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css" rel="stylesheet">
 <script src="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js"></script>
 <style>
-body { margin: 20; padding: 70; }
-#map { position: absolute; top:15; bottom: 15; width: 100%; height: 800px}
+body { margin: 10; padding: 70; }
+#map { position: absolute; top: 10; bottom: 10; width: 100%; height: 800px}
 </style>
 </head>
 <body>
+<script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.min.js"></script>
+<link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.css" type="text/css">
+
+<style>
+    #geocoder-container > div {
+        min-width: 50%;
+        margin-left: 25%;
+    }
+</style>
 <div id="map"></div>
+
+
+
+
+
 <script>
 	mapboxgl.accessToken = 'pk.eyJ1IjoiYWZzbWl0aDEyMyIsImEiOiJjbG9pdTIyaGsxcHd3MnNydzltZnl2Y2Q2In0.uNEZOI46PYjl40gzZ0U2vw';
-const map = new mapboxgl.Map({
-container: 'map', // container ID
-// Choose from Mapbox's core styles, or make your own style with Mapbox Studio
-style: 'mapbox://styles/mapbox/streets-v12', // style URL
-center: [-74.5, 40], // starting position [lng, lat]
-zoom: 9 // starting zoom
-});
+    const map = new mapboxgl.Map({
+        container: 'map',
+        // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
+        style: 'mapbox://styles/mapbox/streets-v12',
+        center: [-1.6253621, 53.2684064],
+        zoom: 0
+    });
 
+    
 
+    const logClimbsCoordinates = <%= raw @log_climbs.to_json(only: [:longitude, :latitude]) %>;
+
+  // Log the coordinates to the console for debugging
+  
+
+  // Filter out null values in case when you log a climb, the geocoder doesn't find coordinates
+  const filteredCoordinates = logClimbsCoordinates.filter(coords => coords.longitude !== null && coords.latitude !== null);
+    console.log('filtered Coordinates:', filteredCoordinates);
+  // Add markers to the map
+  filteredCoordinates.forEach(coords => {
+    new mapboxgl.Marker()
+      .setLngLat([coords.longitude, coords.latitude])
+      .addTo(map);
+  });
+
+  const bounds = new mapboxgl.LngLatBounds();
+  filteredCoordinates.forEach(coords => {
+    bounds.extend([coords.longitude, coords.latitude]);
+  });
+
+  // Set map center and zoom level to fit the bounds
+  map.fitBounds(bounds, { padding: 50 });
 
 </script>
- 
+
 </body>
+</html>
