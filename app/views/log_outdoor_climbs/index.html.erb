@@ -4,11 +4,18 @@
             <div class="col-lg-6 col-md-8 mx-auto">
                 <h1 class="fw-light">Previous Outdoor Climbing Sessions</h1>
                 <br>
-                <p> Here's where you can see all of your previously logged climbs</p>
-                <p> If there isn't an option to 'add a climb' on your log, that's because there's already an image attached to that climb.</p>
-                <p> To change the image, just go to 'edit' and upload your new image there.
-                <% if user_signed_in? %>
                 <div class="text-center">
+                <% if user_signed_in? %>
+
+                    <p> Here's where you can see all of your previously logged climbs</p>
+                    <p> If there isn't an option to 'add a climb' on your log, that's because there's already an image attached to that climb.</p>
+                    <p> To change the image, just go to 'edit' and upload your new image there.</p>
+
+
+                    
+                    <br>
+                    
+                
                     <%= link_to "Log a new climbing session here", new_log_outdoor_climb_path, class: "btn btn-secondary c-2" %>
                 </div>
                 <br>    <br>

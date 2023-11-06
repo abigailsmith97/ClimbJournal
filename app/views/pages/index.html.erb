@@ -1,9 +1,10 @@
 
   <main>
     <section class="py-5 text-center container">
-      <div class="row py-lg-5">
-        <div class="col-lg-6 col-md-8 mx-auto">
-          <%= image_tag('logo.png', alt: 'Gripped Logo', class: 'rounded-circle img-fluid w-60') %>
+      <%= image_tag('GrippedLogo.png', alt: 'Gripped Logo', class: 'rounded-circle img-fluid w-50') %>
+
+     
+          
           <br>
           <% if user_signed_in? %>
         
@@ -19,9 +20,10 @@
           <p>
             <a href="log_outdoor_climbs/new" class="btn btn-light my-2">Log your Outdoor Climbing Session</a>
             <a href="log_outdoor_climbs" class="btn btn-light my-2">See your previous climbs</a>
+            <a href="http://localhost:3000/gallery" class="btn btn-light my-2">View your gallery</a>
+            <a href="pages/climbingmap" class="btn btn-light my-2">View your climbing map</a>
           </p>
-        </div>
-      </div>
+
     </section>
 
     <%= render '/pages/displayrecent', log_climbs: @log_climbs %>

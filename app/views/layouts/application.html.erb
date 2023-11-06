@@ -3,8 +3,9 @@
 <body>
    <%= render '/shared/navbar' %>
    <br>
-    <%= content_tag :div, notice, class: "alert alert-success text-center" if notice %>
-    <%= content_tag :div, alert, class: "alert alert-danger text-center" if alert %>  
+    <%= content_tag :div, notice, class: "alert alert-success text-center", style: "background-color: #7e77ca; color: white;" if notice %>
+<%= content_tag :div, alert, class: "alert alert-danger text-center", style: "background-color: #ff8675; color: white;" if alert %>
+
     
   </body>
 
