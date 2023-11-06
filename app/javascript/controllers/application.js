@@ -7,6 +7,5 @@ application.debug = false
 window.Stimulus   = application
 
 export { application }
-// import mapboxgl from 'mapbox-gl'
 
-// import "@hotwired/turbo-rails"
+

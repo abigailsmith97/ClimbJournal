@@ -10,4 +10,7 @@ pin "@nathanvda/cocoon", to: "https://ga.jspm.io/npm:@nathanvda/cocoon@1.2.14/co
 pin "chartkick", to: "chartkick.js"
 pin "Chart.bundle", to: "Chart.bundle.js"
 
-pin "mapbox-gl", to: "https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.js"
+
+pin "mapbox-gl", to: "mapbox-gl.js", preload: true
+
+# , to: "https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.js"

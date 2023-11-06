@@ -98,3 +98,6 @@ gem "aws-sdk-s3", require: false
 
 gem "geocoder"
 
+gem 'mapbox-gl-rails'
+
+# gem 'mapkick-rb'
