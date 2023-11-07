@@ -6,8 +6,8 @@ class OutdoorClimbing < ApplicationRecord
     has_one_attached :main_image, service: :amazon
     
     accepts_nested_attributes_for :individual_outdoor_climbs,
-                                    allow_destroy: true,
-                                    reject_if: proc { |att| att['climb_name'].blank? || ['grade'].blank?}
+                                    allow_destroy: true
+                                    # reject_if: proc { |att| att['climb_name'].blank? || ['grade'].blank?}
      
     # validates :climbing_type, presence: true, inclusion: { in: ['trad', 'sport', 'bouldering'] }
     # validate :acceptable_image
