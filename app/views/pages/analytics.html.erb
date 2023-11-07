@@ -1,20 +1,91 @@
 <% if user_signed_in? %>
-<div class="container text-center my-5">
+  <div class="container text-center my-5">
     <div class="row">
-        <div class="col-md-12">
-            <h1 class="fw-light mb-4">Your Climbing Summary</h1>
-
-            <h2> Let's take a look on your climbing summary </h2>
-        </div>
+      <div class="col-md-12">
+        <h1 class="fw-light mb-4">Your Climbing Summary</h1>
+        <h2> Let's take a look on your climbing summary </h2>
+      </div>
     </div>
 
+    <%= form_tag(analytics_path, method: :get, class: "mb-4") do %>
+      <%= label_tag(:time_period, "Select Time Period:") %>
+      <%= select_tag(:time_period, options_for_select(["All Logs","This Week", "This Month", "This Year"], params[:time_period]), class: "form-select") %>
+      <%= submit_tag("Filter", class: "btn btn-primary", style:"background-color:#5b52bc; border-color:#5b52bc; color: white;") %>
+    <% end %>
+
+    <%= pie_chart @log_climbs_filtered.where(user_id: current_user.id).group(:climbing_type).count %>
+    <%= line_chart @log_climbs_filtered.group_by_day(:date).count %>
+  </div>
+<% end %>
 
 
-<%= pie_chart @log_climbs.where(user_id: current_user.id).group(:climbing_type).count %>
+<script>
+<%trad_grades_uk = {
+  "M" => "Moderate",
+  "D" => "Difficult",
+  "VD" => "Very Difficult",
+  "HVD" => "Hard Very Difficult",
+  "MS" => "Mild Severe",
+  "S" => "Severe",
+  "HS" => "Hard Severe",
+  "VS" => "Very Severe",
+  "HVS" => "Hard Very Severe",
+  "E1" => "Extreme 1",
+  "E2" => "Extreme 2",
+  "E3" => "Extreme 3",
+  "E4" => "Extreme 4",
+  "E5" => "Extreme 5",
+  "E6" => "Extreme 6",
+  "E7" => "Extreme 7",
+  "E8" => "Extreme 8",
+  "E9" => "Extreme 9",
+  "E10" => "Extreme 10",
+  "E11" => "Extreme 11",
+  "E12" => "Extreme 12",
+  "E13" => "Extreme 13",
+  "E14" => "Extreme 14",
+  "E15" => "Extreme 15",
+  "E16" => "Extreme 16",
+  "E17" => "Extreme 17",
+  "E18" => "Extreme 18",
+  "E19" => "Extreme 19",
+  "E20" => "Extreme 20"
+}%>
 
+french_sport_grades = [
+  "1", "2", "3", "4a", "4b", "4c",
+  "5a", "5b", "5c", "6a", "6a+", "6b",
+  "6b+", "6c", "6c+", "7a", "7a+", "7b",
+  "7b+", "7c", "7c+", "8a", "8a+", "8b",
+  "8b+", "8c", "8c+", "9a", "9a+", "9b",
+  "9b+", "9c"
+] 
 
-<%= line_chart @log_climbs.group_by_day(:date).count%>
+</script>
+<% hardest_trad_grade_uk = nil %>
 
+<% @log_climbs_filtered.each do |climb| %>
+    <% if climb.individual_outdoor_climbs.any? %>
+  
+        <% climb.individual_outdoor_climbs.each do |individual_climb| %>
+            <%if individual_climb.grade.present?%>
+                <% grade = individual_climb.grade %>
+                <% if trad_grades_uk.include?(grade) %>
+                    <% if hardest_trad_grade_uk.nil? || trad_grades_uk[grade] > trad_grades_uk[hardest_trad_grade_uk] %>
+                    <% hardest_trad_grade_uk = grade %>
+                    <% end %>
+                
+                <% end %>
+            <% end %>
+         <%end%>
+    <%end%>
 <%end%>
-
-</div>
+<% if hardest_trad_grade_uk %>
+  <div class="container text-center my-5">
+    <h3>The hardest UK trad climbing grade in your climbs is <%= hardest_trad_grade_uk %> (<%= trad_grades_uk[hardest_trad_grade_uk] %>). </h3>
+  </div>
+<% else %>
+  <div class="container text-center my-5">
+    <h3>No valid UK trad climbing grades found in your climbs.</h3>
+  </div>
+<% end %>
