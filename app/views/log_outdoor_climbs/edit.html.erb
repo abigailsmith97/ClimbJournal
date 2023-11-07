@@ -41,12 +41,12 @@
                         <%= f.fields_for :individual_outdoor_climbs do |individual_outdoor_climb| %>
                             <tr class="nested-fields">
 
-                            <td><%= individual_outdoor_climb.text_field :climb_name, class: "form-control" %></td>
-                            <td><%= individual_outdoor_climb.text_field :grade, class: "form-control" %></td>
-                            <td><%= individual_outdoor_climb.text_field :climbing_style, class: "form-control" %></td>
-                            <td><%= individual_outdoor_climb.text_field :climbing_partner, class: "form-control" %></td>
-                            <td><%= individual_outdoor_climb.text_field :notes, class: "form-control" %></td>
-                            <td><%= link_to_remove_association "Delete this climb", individual_outdoor_climb, class: "btn btn-secondary mt-3" ,  style:"background-color:#ff8675; border-color:#ff8675; color: white;"%></td>
+                            <td><%= individual_outdoor_climb.text_field :climb_name, class: "form-control", labelledby: "Climb Name form field" %></td>
+                            <td><%= individual_outdoor_climb.text_field :grade, class: "form-control", label: "Climb grade form field" %></td>
+                            <td><%= individual_outdoor_climb.text_field :climbing_style, class: "form-control" , label: "Climbin Style form field"%></td>
+                            <td><%= individual_outdoor_climb.text_field :climbing_partner, class: "form-control", label: "Climb Partner form field" %></td>
+                            <td><%= individual_outdoor_climb.text_field :notes, class: "form-control", label: "Climb Notes form field"  %></td>
+                            <td><%= link_to_remove_association "Delete this climb", individual_outdoor_climb, class: "btn btn-secondary mt-3" ,  style:"background-color:#5b52bc; border-color:#5b52bc; color: white;", label: "Delete climb column" %></td>
                             </tr>
                         <% end %>
                         </tbody>
@@ -73,11 +73,11 @@
                     <%# <%= form.submit "Upload", class: "btn btn-primary" %> 
                     <%# <% end %>
                     <br>
-            <%= f.submit "Save Climb", class: "btn btn-secondary mt-3", style:"background-color:#7e77ca; border-color:#7e77ca; color: white;" %>
+            <%= f.submit "Save Climb", class: "btn btn-secondary mt-3", style:"background-color:#5b52bc; border-color:#5b52bc; color: white;" %>
             <% end %> 
         </div>
        
-        <%= button_to "Delete entire log", log_outdoor_climb_path(OutdoorClimbing.find(params[:id])), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete, class: "btn btn-secondary mt-3",  style:"background-color:#ff8675; border-color:#ff8675; color: white;"%>
+        <%= button_to "Delete entire log", log_outdoor_climb_path(OutdoorClimbing.find(params[:id])), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete, class: "btn btn-secondary mt-3"%>
        
         <!-- </div> -->
     </section>

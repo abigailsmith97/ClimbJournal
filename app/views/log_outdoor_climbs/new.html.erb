@@ -85,8 +85,9 @@
       <br>
       <br>
 
-      <%= f.submit "Save Climb", class:"btn-primary border-0 rounded-pill shadow p-3", id: "saveClimbButton" %>
-      <br><br><br>
+      <%= f.submit "Save Climb", class:"btn-primary border-0 rounded-pill shadow p-3", id: "saveClimbButton" , style:"background-color:#5b52bc; border-color:#5b52bc; color: white;" %>
+      
+      <br><br>
       <%= link_to "Back", :back, class: "btn btn-secondary" %>
 
     
@@ -95,7 +96,7 @@
 
     <%else%>
     <p>Please login to see log new climbs.</p>
-    <%= link_to "Login", new_user_session_path %>
+    <%= link_to "Login", new_user_session_path , style:"background-color:#5b52bc; border-color:#5b52bc; color: white;" %>
     
   <% end %>
   <br>
