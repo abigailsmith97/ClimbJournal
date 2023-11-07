@@ -12,4 +12,10 @@ class PagesController < ApplicationController
     @log_climbs = OutdoorClimbing.order(date: :desc)
   end
 
+  def analytics
+    @log_climbs = OutdoorClimbing.all
+
+   
+  end
+
 end

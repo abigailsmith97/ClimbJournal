@@ -1,0 +1,20 @@
+<% if user_signed_in? %>
+<div class="container text-center my-5">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="fw-light mb-4">Your Climbing Summary</h1>
+
+            <h2> Let's take a look on your climbing summary </h2>
+        </div>
+    </div>
+
+
+
+<%= pie_chart @log_climbs.where(user_id: current_user.id).group(:climbing_type).count %>
+
+
+<%= line_chart @log_climbs.group_by_day(:date).count%>
+
+<%end%>
+
+</div>

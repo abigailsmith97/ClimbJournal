@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   get '/gallery', to: 'pages#gallery'
 
   get '/climbingmap', to: 'pages#climbingmap'
+ 
+  get '/analytics', to: 'pages#analytics'
 
   # resources :nameofusers, only: [:new, :create, :edit, :update]
 

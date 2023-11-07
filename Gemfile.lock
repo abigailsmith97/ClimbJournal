@@ -332,7 +332,7 @@ DEPENDENCIES
   bootstrap
   capybara
   carrierwave
-  chartkick (~> 5.0)
+  chartkick
   cocoon
   debug
   devise (~> 4.9.2)
