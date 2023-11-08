@@ -91,6 +91,8 @@ class LogOutdoorClimbsController < ApplicationController
   def log_climb_params
     params.require(:outdoor_climbing).permit(:date, :climbing_type, :location, :main_image, :longitude, :latitude, individual_outdoor_climbs_attributes:[:id, :climb_name, :grade, :climbing_style, :tick, :notes, :climbing_partner, :_destroy])
   end
+
+
 end
 
 # def acceptable_image
