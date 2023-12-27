@@ -12,7 +12,7 @@ Rails.application.routes.draw do
  
   get '/analytics', to: 'pages#analytics'
 
-  # resources :nameofusers, only: [:new, :create, :edit, :update]
+  get '/timer', to: 'pages#timer'
 
   resources :log_outdoor_climbs, only: [:index, :new, :create, :edit, :update, :destroy, :show, :display] do
     collection do

@@ -157,6 +157,22 @@
     <h3>No valid climbing grades found in your climbs.</h3>
   </div>
 <% end %>
+<div class="container text-center my-5">
+    <div class="row">
+      <div class="col-md-12">
+        
+        <h3> Climbing Split </h3> <br>
+      </div>
+    </div>
 
 <%= pie_chart @log_climbs_filtered.where(user_id: current_user.id).group(:climbing_type).count %>
+
+<div class="container text-center my-5">
+    <div class="row">
+      <div class="col-md-12">
+        
+        <h3> Climbing Log Timeline </h3> <br>
+        <h4> Let's have a look at how many climbing sessions you've logged </h4>
+      </div>
+    </div>
     <%= line_chart @log_climbs_filtered.group_by_day(:date).count %>

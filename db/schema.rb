@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_08_183337) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_10_135824) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -51,7 +51,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_08_183337) do
     t.string "climbing_partner"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "outdoor_climbing_id"
+    t.bigint "outdoor_climbing_id", null: false
     t.index ["outdoor_climbing_id"], name: "index_individual_outdoor_climbs_on_outdoor_climbing_id"
   end
 
@@ -63,14 +63,6 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_08_183337) do
     t.datetime "updated_at", null: false
     t.index ["latitude"], name: "index_locations_on_latitude"
     t.index ["longitude"], name: "index_locations_on_longitude"
-  end
-
-  create_table "nameofusers", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "user_id", null: false
-    t.index ["user_id"], name: "index_nameofusers_on_user_id"
   end
 
   create_table "outdoor_climbings", force: :cascade do |t|
@@ -85,6 +77,16 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_08_183337) do
     t.index ["user_id"], name: "index_outdoor_climbings_on_user_id"
   end
 
+  create_table "timers", force: :cascade do |t|
+    t.date "date"
+    t.float "effort_time"
+    t.float "rest_time"
+    t.string "climbing_type"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -93,7 +95,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_08_183337) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["email"], name: "index_users_on_email"
+    t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 

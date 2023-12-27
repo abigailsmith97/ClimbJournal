@@ -104,5 +104,3 @@ gem 'geocoder'
 gem 'mapbox-gl-rails'
 
 gem 'faker'
-
-gem 'capybara'

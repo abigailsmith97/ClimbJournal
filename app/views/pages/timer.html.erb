@@ -1,0 +1,159 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        p {
+            text-align: center;
+            font-size: 60px;
+            margin-top: 0px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <label for="effortDuration">Effort Time (seconds):</label>
+    <input type="number" id="effortDuration" value="5">
+    <br>
+
+    <label for="restDuration">Rest Time (seconds):</label>
+    <input type="number" id="restDuration" value="30">
+    <br>
+
+    <label for="maxReps">Number of Reps:</label>
+    <input type="number" id="maxReps" value="6">
+    <br>
+
+    <label for="maxSets">Number of Sets:</label>
+    <input type="number" id="maxSets" value="1">
+    <br>
+
+    <p id="timerDisplay"></p>
+    <p id="setCounter">Set: 0</p>
+    <p id="repCounter">Reps: 0</p>
+
+    <!-- Buttons to control the timer -->
+    <button onclick="startWorkout()">Start Workout</button>
+    <button onclick="pauseResumeWorkout()" id="pauseResumeBtn" style="display: none;">Pause</button>
+    <button onclick="resetWorkout()">Reset</button>
+
+    <script>
+        var setCounter = 0;
+        var repCounter = 0;
+        var timer;
+        var isPaused = false;
+        var timeLeft = 0; // Variable to store time left in seconds
+        var isEffort = false; // Flag to track if it's an effort period
+
+        function pauseResumeWorkout() {
+            if (isPaused) {
+                document.getElementById("pauseResumeBtn").innerHTML = "Pause";
+                startWorkoutTimer();
+            } else {
+                document.getElementById("pauseResumeBtn").innerHTML = "Resume";
+                isPaused = true;
+                clearTimeout(timer);
+            }
+        }
+
+        function resetWorkout() {
+            isPaused = false;
+            clearTimeout(timer);
+            document.getElementById("timerDisplay").innerHTML = "00m 00s";
+            document.getElementById("setCounter").innerHTML = "Set: 0";
+            document.getElementById("repCounter").innerHTML = "Reps: 0";
+            document.getElementById("pauseResumeBtn").style.display = "none";
+            document.getElementById("pauseResumeBtn").innerHTML = "Pause";
+            document.querySelector('button').disabled = false;
+            setCounter = 0;
+            repCounter = 0;
+            timeLeft = 0;
+            isEffort = false; // Reset to the initial state
+        }
+
+        function updateCountdown() {
+            var minutes = Math.floor(timeLeft / 60);
+            var seconds = timeLeft % 60;
+            document.getElementById("timerDisplay").innerHTML = (minutes < 10 ? '0' : '') + minutes + "m " + (seconds < 10 ? '0' : '') + seconds + "s ";
+            document.getElementById("setCounter").innerHTML = "Set: " + setCounter;
+            document.getElementById("repCounter").innerHTML = "Reps: " + repCounter;
+        }
+
+        function startWorkout() {
+            var effortDuration = parseInt(document.getElementById("effortDuration").value, 10) || 10;
+            var restDuration = parseInt(document.getElementById("restDuration").value, 10) || 30;
+            var maxReps = parseInt(document.getElementById("maxReps").value, 10) || 6;
+            var maxSets = parseInt(document.getElementById("maxSets").value, 10) || 1;
+
+            document.querySelector('button').disabled = true;
+            isPaused = false;
+
+            // Initial 10-second countdown
+            function initialCountdown() {
+                if (timeLeft === 0) {
+                    clearTimeout(timer);
+                    // Start the workout after the initial countdown
+                    startWorkoutTimer();
+                } else {
+                    updateCountdown();
+                    timeLeft--;
+                    document.getElementById("timerDisplay").style.color = "orange"; // Initial countdown color
+                    timer = setTimeout(initialCountdown, 1000);
+                }
+            }
+
+            resetWorkout(); // Reset before starting
+            timeLeft = 10; // Set the initial countdown time
+            initialCountdown();
+
+            // Main workout timer
+            function startWorkoutTimer() {
+                document.getElementById("pauseResumeBtn").style.display = "inline"; // Show the Pause/Resume button
+                function nextStep() {
+                    if (isPaused) {
+                        return;
+                    }
+
+                    if (timeLeft === 0) {
+                        if (!isEffort) {
+                            // If it's a rest period, switch to effort
+                            isEffort = true;
+                            timeLeft = effortDuration;
+                            repCounter++;
+                            document.getElementById("timerDisplay").style.color = "green"; // Effort color
+                        } else {
+                            // If it's an effort period, switch to rest
+                            if (repCounter < maxReps) {
+                                timeLeft = restDuration;
+                                document.getElementById("timerDisplay").style.color = "red"; // Rest color
+                            } else if (setCounter < maxSets - 1) {
+                                // Rest period between sets
+                                repCounter = 0;
+                                setCounter++;
+                                timeLeft = restDuration;
+                                document.getElementById("timerDisplay").style.color = "red"; // Rest color
+                            } else {
+                                // Last set, no rest
+                                setCounter++;
+                                timeLeft = effortDuration;
+                                document.getElementById("timerDisplay").style.color = "green"; // Effort color
+                            }
+                            isEffort = false;
+                        }
+                    }
+
+                    updateCountdown();
+                    timeLeft--;
+                    timer = setTimeout(nextStep, 1000);
+                }
+
+                nextStep(); // Start the main workout timer
+            }
+        }
+    </script>
+
+</body>
+
+</html>

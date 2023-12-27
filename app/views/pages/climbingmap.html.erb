@@ -9,21 +9,25 @@
     </div>
     <div class="row">
         <div class="col-md-6">
-            <div class="alert alert-info" role="alert" style="background-color:#5b52bc; border-color:#5b52bc; color: white;">
+            <div class="alert alert-info" role="alert">
                 Click on the markers to see more details about the climbing session.<br><br>
             </div>
         </div>
         <div class="col-md-6">
-            <div class="alert alert-info" role="alert" style="background-color:#5b52bc; border-color:#5b52bc; color: white;">
+            <div class="alert alert-info" role="alert" >
                 Marker missing or it isn't where you think it should be? Add some more details of the climbing location in your log.<br?>
                 <a href="log_outdoor_climbs" class="btn-sml btn-light my-2">Go to your Logs</a>
             </div>
         </div>
     </div>
-
-
-
-
+   
+     <script>
+    document.addEventListener("turbo:load", function() {
+        document.getElementById('map').addEventListener("turbo:submit-end", function(e){
+            window.location.reload(true);
+        });
+    });
+    </script>
 
    
     <meta charset="utf-8">
@@ -131,3 +135,4 @@
     </body>
     </section>
     </html>
+

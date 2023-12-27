@@ -7,5 +7,5 @@ class User < ApplicationRecord
 
   #validates :email, uniqueness: true
   has_many :log_climbs, class_name: 'OutdoorClimbing'
-  has_one :nameofuser, class_name: 'Nameofuser' 
+
 end
